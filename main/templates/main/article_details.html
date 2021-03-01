@@ -16,7 +16,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="#">Home</a>
+                  <a href="{% url 'blog' %}">Back to All Blogs</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                   {{ article.title }}
@@ -34,7 +34,7 @@
             <div class="news-img-box">
             <br>
             <br>
-              <img style="" src="{{ article.image.url }}" alt="" class="img-fluid rounded mx-auto d-block">
+              <img style="max-height: 700px; max-width:1000px;" src="{{ article.image.url }}" alt="" class="img-fluid rounded mx-auto d-block">
             </div>
           </div>
           <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
@@ -65,7 +65,8 @@
               <blockquote class="blockquote">
                 <p class="mb-4"> {{ article.quote }} </p>
               </blockquote>
-              {% else %}
+              {% endif %}
+              {% if article.quote == None %}
               <blockquote class="blockquote">
                 <p class="mb-4"> The Author did not leave a quote. Better luck next time! :) </p>
               </blockquote>

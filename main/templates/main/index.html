@@ -256,6 +256,7 @@
           <div class="swiper-wrapper">
 
             <div class="carousel-item-c swiper-slide">
+            {% for article in articles.all | slice:"3" %}
               <div class="card-box-b card-shadow news-box">
                 <div class="img-box-b">
                   <img src="{% static 'img/news1.jpg' %}" alt="" class="img-b img-fluid">
@@ -263,12 +264,12 @@
                 <div class="card-overlay">
                   <div class="card-header-b">
                     <div class="card-category-b">
-                      <a href="#" class="category-b">Article Tag</a>
+                      <a href="#" class="category-b"> {{ article.tag }}</a>
                     </div>
                     <div class="card-title-b">
                       <h2 class="title-2">
-                        <a href="#">Article Title
-                          <br>Article Author</a>
+                        <a href="#"> {{ article.title }}
+                          <br> {{ article.user }}</a>
                       </h2>
                     </div>
                     <div class="card-date">
@@ -277,6 +278,7 @@
                   </div>
                 </div>
               </div>
+              {% endfor %}
             </div><!-- End carousel item -->
 
           </div>

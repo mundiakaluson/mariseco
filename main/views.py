@@ -3,7 +3,8 @@ from .models import Blog
 
 # Create your views here.
 def index(request):
-    return render(request, 'main/index.html')
+    articles = Blog.objects.all()
+    return render(request, 'main/index.html', {'articles': articles})
 
 def blog(request):
     articles = Blog.objects.all()

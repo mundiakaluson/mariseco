@@ -1,5 +1,467 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
+<div class="intro intro-carousel swiper-container position-relative">
 
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url('{% static 'img/hero.jpg' %}');">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                    <p class="intro-title-top">A Home of Exellency
+                      <br> Lenga Juu
+                    </p>
+                    <h1 class="intro-title mb-4 ">
+                      <span class="color-b">Mariseco </span> 
+                      <br> Tunapaa!
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url('{% static 'img/hero2.jpg' %}');">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                    <p class="intro-title-top">Located a few kilometers away the heart of the city centre.
+                      <br> Mariakani
+                    </p>
+                    <h1 class="intro-title mb-4">
+                      <span class="color-b">A Condusive Environmnet</span>
+                      <br>Suitable For Excellent Learning!
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url('{% static 'img/hero3.jpg' %}');">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                    <p class="intro-title-top">Teachers Dedicated To Progressive Learning.
+                      <br> Towards Success!
+                    </p>
+                    <h1 class="intro-title mb-4">
+                      <span class="color-b">38+</span> Teachers
+                      <br> With Relevant Experience.
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div><!-- End Intro Section -->
+
+  <main id="main">
+
+    <!-- ======= Services Section ======= -->
+    <section class="section-services section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">Our History</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card-box-c foo">
+              <div class="card-header-c d-flex">
+                <div class="card-box-ico">
+                  <span class="bi bi-hourglass-bottom"></span>
+                </div>
+                <div class="card-title-c align-self-center">
+                  <h2 class="title-c">our principles</h2>
+                </div>
+              </div>
+              <div class="card-body-c">
+                <p class="content-c">
+                  Mariakani Secondary School was founded in 1968 a joint harambee day and mixed school. 
+                  It has since evolved into a five streamed boys boarding school in forms I & II and three streams form III & IV. 
+                  The school has 752 students and 32 teachers
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-box-c foo">
+              <div class="card-header-c d-flex">
+                <div class="card-box-ico">
+                  <span class="bi bi-geo-alt"></span>
+                </div>
+                <div class="card-title-c align-self-center">
+                  <h2 class="title-c">location</h2>
+                </div>
+              </div>
+              <div class="card-body-c">
+                <p class="content-c">
+                  Our School is located a few kilometers away the heart of the city centre 
+                  that has been designed for the need of both learning and talent.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-box-c foo">
+              <div class="card-header-c d-flex">
+                <div class="card-box-ico">
+                  <span class="bi bi-award"></span>
+                </div>
+                <div class="card-title-c align-self-center">
+                  <h2 class="title-c">our mission</h2>
+                </div>
+              </div>
+              <div class="card-body-c">
+                <p class="content-c">
+                  To be the preferred center that produces well balanced graduates.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Agents Section ======= -->
+    <section class="section-agents section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">Our Streams</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card-box-d">
+              <div class="card-img-d">
+                <img src="{% static 'img/form1.jpg' %}" alt="Form 1" class="img-d img-fluid">
+              </div>
+              <div class="card-overlay card-overlay-hover">
+                <div class="card-header-d">
+                  <div class="card-title-d align-self-center">
+                    <h3 class="title-d">
+                        Form One
+                        <br> The Humble Newbies
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card-box-d">
+              <div class="card-img-d">
+                <img src="{% static 'img/form2.jpg' %}" alt="Form 2" class="img-d img-fluid">
+              </div>
+              <div class="card-overlay card-overlay-hover">
+                <div class="card-header-d">
+                  <div class="card-title-d align-self-center">
+                    <h3 class="title-d">
+                        Form Two
+                        <br> The Burning Scholars
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card-box-d">
+              <div class="card-img-d">
+                <img src="{% static 'img/form3.jpg' %}" alt="Form 3" class="img-d img-fluid">
+              </div>
+              <div class="card-overlay card-overlay-hover">
+                <div class="card-header-d">
+                  <div class="card-title-d align-self-center">
+                    <h3 class="title-d">
+                        Form Three
+                        <br> The Restless Achievers
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card-box-d">
+              <div class="card-img-d">
+                <img src="{% static 'img/form4.jpg' %}" alt="Form 4" class="img-d img-fluid">
+              </div>
+              <div class="card-overlay card-overlay-hover">
+                <div class="card-header-d">
+                  <div class="card-title-d align-self-center">
+                    <h3 class="title-d">
+                        Form Four
+                        <br> The Pillars of Mariseco
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= Latest News Section ======= -->
+    <section class="section-news section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">Latest Mariseco News</h2>
+              </div>
+              <div class="title-link">
+                <a href="blog-grid.html">All Our News
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="news-carousel" class="swiper-container">
+          <div class="swiper-wrapper">
+
+            <div class="carousel-item-c swiper-slide">
+              <div class="card-box-b card-shadow news-box">
+                <div class="img-box-b">
+                  <img src="{% static 'img/news1.jpg' %}" alt="" class="img-b img-fluid">
+                </div>
+                <div class="card-overlay">
+                  <div class="card-header-b">
+                    <div class="card-category-b">
+                      <a href="#" class="category-b">Article Tag</a>
+                    </div>
+                    <div class="card-title-b">
+                      <h2 class="title-2">
+                        <a href="#">Article Title
+                          <br>Article Author</a>
+                      </h2>
+                    </div>
+                    <div class="card-date">
+                      <span class="date-b">Article Date</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End carousel item -->
+
+          </div>
+        </div>
+
+        <div class="news-carousel-pagination carousel-pagination"></div>
+      </div>
+    </section><!-- End Latest News Section -->
+
+    <section class="section-testimonials section-t8 nav-arrow-a">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">Message From our Staff Members</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="testimonial-carousel" class="swiper-container">
+          <div class="swiper-wrapper">
+
+            <div class="carousel-item-a swiper-slide">
+              <div class="testimonials-box">
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <div class="testimonial-img">
+                      <img src="{% static 'img/principal.png' %}" alt="" class="img-fluid">
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <div class="testimonial-ico">
+                      <i class="bi bi-chat-quote-fill"></i>
+                    </div>
+                    <div class="testimonials-content">
+                      <p class="testimonial-text">
+                        The school is a powerhouse in co-curricular activities, 
+                        with our music team reaching the nationals perennially. 
+                        Our academic performance stands in need of much improvement, so is our discipline. 
+                        Moreover this is a vibrant institution seeking to reclaim its vision of discovering and developing individual talents through provision of quality education.
+                      </p>
+                    </div>
+                    <div class="testimonial-author-box">
+                      <img src="{% static 'img/principal.png' %}" alt="" class="testimonial-avatar">
+                      <h5 class="testimonial-author"> Amin Mohammed Karanja
+                        <br>
+                        <h5 style="color: #3c8235;">Principal</h5>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End carousel item -->
+
+            <div class="carousel-item-a swiper-slide">
+              <div class="testimonials-box">
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <div class="testimonial-img">
+                      <img src="{% static 'img/deputy.png' %}" alt="" class="img-fluid">
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <div class="testimonial-ico">
+                      <i class="bi bi-chat-quote-fill"></i>
+                    </div>
+                    <div class="testimonials-content">
+                      <p class="testimonial-text">
+                        The dicipline of our students has been improving for the last 2year and this manifested itself in the academic perfomance 2019. 
+                        The discipline management committee has been very active in ensuring that we promote integrity, fairnes, transparency, accountability, mannerism, conflict resolution, dialogue and to nature the young people into all round citizens.
+                      </p>
+                    </div>
+                    <div class="testimonial-author-box">
+                      <img src="{% static 'img/deputy.png' %}" alt="" class="testimonial-avatar">
+                      <h5 class="testimonial-author">Alfred Maende
+                        <br>
+                        <h5 style="color: #3c8235;">Deputy Principal</h5>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item-a swiper-slide">
+              <div class="testimonials-box">
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <div class="testimonial-img">
+                      <img src="{% static 'img/dean.png' %}" alt="" class="img-fluid">
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <div class="testimonial-ico">
+                      <i class="bi bi-chat-quote-fill"></i>
+                    </div>
+                    <div class="testimonials-content">
+                      <p class="testimonial-text">
+                        We are proud to have enough teacher staff of 34 teachers who handle students with 
+                        professionalism bearing the code of conduct is the key instrument in the teaching profession. 
+                        Our main priority in academics above all other activities mentioned we are looking forward to making 
+                        the school the most preferred academic center in the region.
+                      </p>
+                    </div>
+                    <div class="testimonial-author-box">
+                      <img src="{% static 'img/dean.png' %}" alt="" class="testimonial-avatar">
+                      <h5 class="testimonial-author">Kapukha Eliud
+                        <br>
+                        <h5 style="color: #3c8235;">Dean</h5>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item-a swiper-slide">
+              <div class="testimonials-box">
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <div class="testimonial-img">
+                      <img src="assets/img/testimonial-2.jpg" alt="" class="img-fluid">
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <div class="testimonial-ico">
+                      <i class="bi bi-chat-quote-fill"></i>
+                    </div>
+                    <div class="testimonials-content">
+                      <p class="testimonial-text">
+                        There is a notable academic improvement in the school. 
+                        This is due to the change of attitude of students towards examinations. 
+                        Mariakani secondary school is highly endowed with relevant learning resources without forgetting the highly qualified,experienced and motivated teachers. 
+                        Our students are all round. The year 2019, the Mariakani fraternity is expecting greater improvement in the K.C.S.E examinations as compared to the previous years.
+                      </p>
+                    </div>
+                    <div class="testimonial-author-box">
+                      <img src="assets/img/mini-testimonial-2.jpg" alt="" class="testimonial-avatar">
+                      <h5 class="testimonial-author">Makori Dorine
+                        <br>
+                        <h5 style="color: #3c8235;">Academic Mistress</h5>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item-a swiper-slide">
+              <div class="testimonials-box">
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <div class="testimonial-img">
+                      <img src="assets/img/testimonial-2.jpg" alt="" class="img-fluid">
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <div class="testimonial-ico">
+                      <i class="bi bi-chat-quote-fill"></i>
+                    </div>
+                    <div class="testimonials-content">
+                      <p class="testimonial-text">
+                        The department boasts of being in charge of an environment within a 34 acre boundary. 
+                        The school has 8 dormitories, 16 classses, an administration block, 5 staff houses, 
+                        4 laboratories, a library, kitchen and dining hall among other important infrastructure. 
+                        There is also a standby generator and an underground water tank, we have managed to ensure there is smooth running of the school in terms of enviromental cleanliness, classroom and dormitory hygiene.
+                      </p>
+                    </div>
+                    <div class="testimonial-author-box">
+                      <img src="assets/img/mini-testimonial-2.jpg" alt="" class="testimonial-avatar">
+                      <h5 class="testimonial-author">Maina Keru
+                        <br>
+                        <h5 style="color: #3c8235;">Senior Boarding Master</h5>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End carousel item -->
+
+          </div>
+        </div>
+        <div class="testimonial-carousel-pagination carousel-pagination"></div>
+
+      </div>
+    </section>
+
+  </main>
 {% endblock content %}

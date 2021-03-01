@@ -254,9 +254,8 @@
 
         <div id="news-carousel" class="swiper-container">
           <div class="swiper-wrapper">
-
+            {% for article in articles.all|slice:"2" %}
             <div class="carousel-item-c swiper-slide">
-            {% for article in articles.all | slice:"3" %}
               <div class="card-box-b card-shadow news-box">
                 <div class="img-box-b">
                   <img src="{% static 'img/news1.jpg' %}" alt="" class="img-b img-fluid">
@@ -273,14 +272,13 @@
                       </h2>
                     </div>
                     <div class="card-date">
-                      <span class="date-b">Article Date</span>
+                      <span class="date-b"> {{ article.created_at }}</span>
                     </div>
                   </div>
                 </div>
               </div>
-              {% endfor %}
-            </div><!-- End carousel item -->
-
+            </div>
+            {% endfor %}
           </div>
         </div>
 

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<body>
+
+  <main id="main">
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Mariseco News</h1>
+              <span class="color-text-a">Stay updated on the latest Mariseco News!</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Our News
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+    <!-- =======  Blog Grid ======= -->
+    <section class="news-grid grid">
+      <div class="container">
+        <div class="row">
+        {% for article in articles.all %}
+          <div class="col-md-4">
+            <div class="card-box-b card-shadow news-box">
+              <div class="img-box-b">
+                <img style="height: 450px; width: 450px; object-fit:cover;" src="{{ article.image.url }}" alt="" class="img-b img-fluid rounded">
+              </div>
+              <div class="card-overlay">
+                <div class="card-header-b">
+                  <div class="card-category-b">
+                    <a href="#" class="category-b">{{ article.tag }}</a>
+                  </div>
+                  <div class="card-title-b">
+                    <h2 class="title-2">
+                      <a href="blog-single.html"> {{ article.title }}
+                        <br>Authored By: <span class="color-b">{{ article.user | capfirst }}</span></a>
+                    </h2>
+                  </div>
+                  <div class="card-date">
+                    <span class="date-b">{{ article.created_at }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+      </div>
+    </section>
+    <!-- End Blog Grid-->
+
+  </main><!-- End #main -->
+  </section>
+
+</body>
+{% endblock %}

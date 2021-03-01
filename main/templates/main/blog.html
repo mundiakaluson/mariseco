@@ -43,11 +43,11 @@
               <div class="card-overlay">
                 <div class="card-header-b">
                   <div class="card-category-b">
-                    <a href="#" class="category-b">{{ article.tag }}</a>
+                    <a href="{% url 'article_details' article.id %}" class="category-b">{{ article.tag }}</a>
                   </div>
                   <div class="card-title-b">
                     <h2 class="title-2">
-                      <a href="blog-single.html"> {{ article.title }}
+                      <a href="{% url 'article_details' article.id %}"> {{ article.title }}
                         <br>Authored By: <span class="color-b">{{ article.user | capfirst }}</span></a>
                     </h2>
                   </div>

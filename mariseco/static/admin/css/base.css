@@ -450,13 +450,13 @@ a.button {
     float: right;
     border: none;
     font-weight: 400;
-    background: #417690;
+    background: #3c8235;
 }
 
 .button.default:active, input[type=submit].default:active,
 .button.default:focus, input[type=submit].default:focus,
 .button.default:hover, input[type=submit].default:hover {
-    background: #205067;
+    background: #3c8235;
 }
 
 .button[disabled].default,
@@ -497,7 +497,7 @@ input[type=button][disabled].default {
     font-weight: 400;
     font-size: 13px;
     text-align: left;
-    background: #79aec8;
+    background: #3c8235;
     color: #fff;
 }
 
@@ -698,7 +698,7 @@ a.deletelink:focus, a.deletelink:hover {
 }
 
 .object-tools a:focus, .object-tools a:hover {
-    background-color: #417690;
+    background-color: #3c8235;
 }
 
 .object-tools a:focus{
@@ -813,13 +813,13 @@ table#change-history tbody th {
     justify-content: space-between;
     align-items: center;
     padding: 10px 40px;
-    background: #417690;
-    color: #ffc;
+    background: #3c8235;
+    color: #3c8235;
     overflow: hidden;
 }
 
 #header a:link, #header a:visited {
-    color: #fff;
+    color: #3c8235;
 }
 
 #header a:focus , #header a:hover {
@@ -835,11 +835,11 @@ table#change-history tbody th {
     margin: 0 20px 0 0;
     font-weight: 300;
     font-size: 24px;
-    color: #f5dd5d;
+    color: #3c8235;
 }
 
 #branding h1, #branding h1 a:link, #branding h1 a:visited {
-    color: #f5dd5d;
+    color: #3c8235;
 }
 
 #branding h2 {
@@ -847,7 +847,7 @@ table#change-history tbody th {
     font-size: 14px;
     margin: -8px 0 8px 0;
     font-weight: normal;
-    color: #ffc;
+    color: #3c8235;
 }
 
 #branding a:hover {

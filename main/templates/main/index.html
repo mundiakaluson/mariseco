@@ -234,58 +234,6 @@
       </div>
     </section>
 
-    <!-- ======= Latest News Section ======= -->
-    <section class="section-news section-t8">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="title-wrap d-flex justify-content-between">
-              <div class="title-box">
-                <h2 class="title-a">Latest Mariseco News</h2>
-              </div>
-              <div class="title-link">
-                <a href="blog-grid.html">All Our News
-                  <span class="bi bi-chevron-right"></span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="news-carousel" class="swiper-container">
-          <div class="swiper-wrapper">
-            {% for article in articles.all|slice:"2" %}
-            <div class="carousel-item-c swiper-slide">
-              <div class="card-box-b card-shadow news-box">
-                <div class="img-box-b">
-                  <img src="{% static 'img/news1.jpg' %}" alt="" class="img-b img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-header-b">
-                    <div class="card-category-b">
-                      <a href="#" class="category-b"> {{ article.tag }}</a>
-                    </div>
-                    <div class="card-title-b">
-                      <h2 class="title-2">
-                        <a href="#"> {{ article.title }}
-                          <br> {{ article.user }}</a>
-                      </h2>
-                    </div>
-                    <div class="card-date">
-                      <span class="date-b"> {{ article.created_at }}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-
-        <div class="news-carousel-pagination carousel-pagination"></div>
-      </div>
-    </section><!-- End Latest News Section -->
-
     <section class="section-testimonials section-t8 nav-arrow-a">
       <div class="container">
         <div class="row">

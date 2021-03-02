@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Delivery a Success</h1>
+              <span class="color-text-a">We appriciate that you have reached out! We will respond through your email!</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Success
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="jumbotron text-center">
+    <h1 class="display-3">Thank You!</h1>
+    <p class="lead"><strong>Your Message</strong> has been successfully delivered!</p>
+    <hr>
+    </div>
+    <script>
+        var timer = setTimeout(function() {
+            window.location="{% url 'home' %}"
+        }, 3000);
+    </script>
+{% endblock %}

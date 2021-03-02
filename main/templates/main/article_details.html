@@ -61,16 +61,6 @@
               <p>
                 {{ article.content }}
               </p>
-              {% if article.quote != None %}
-              <blockquote class="blockquote">
-                <p class="mb-4"> {{ article.quote }} </p>
-              </blockquote>
-              {% endif %}
-              {% if article.quote == None %}
-              <blockquote class="blockquote">
-                <p class="mb-4"> The Author did not leave a quote. Better luck next time! :) </p>
-              </blockquote>
-              {% endif %}
             </div>
             <div class="post-footer">
               <div class="post-share">

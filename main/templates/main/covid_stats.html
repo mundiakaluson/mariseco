@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main id="main">
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Our Statistics</h1>
+              <span class="color-text-a">As a Modern School, we strive to bring the best to both parents and students. 
+              This are our current Statistics from the World Health Organization with our country featured on the first column! <br> Please be patient if the page takes time. The Statistics are Retrieved in REAL-TIME.</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Covid-19 Statistics
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+<script src="https://apps.elfsight.com/p/platform.js" defer></script>
+<div class="elfsight-app-18b5242a-f74c-4bf6-9b5b-c3aaba62e2cb"></div>
+</main>
+{% endblock %}

@@ -13,3 +13,6 @@ def blog(request):
 def article_details(request, blog_id):
     article = get_object_or_404(Blog, pk=blog_id)
     return render(request, 'main/article_details.html', {"article": article})
+
+def covid_stats(request):
+    return render(request, 'main/covid_stats.html')

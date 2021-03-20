@@ -12,7 +12,23 @@ class ContactAdmin(admin.ModelAdmin):
     list_filter = ('sender_subject', 'sent_at')
     readonly_fields = ('sender_name', 'sender_mail', 'sender_subject', 'sender_message', 'sent_at')
 
+class WebContentAdmin(admin.ModelAdmin):
+    pass
+
+class CommentAdmin(admin.ModelAdmin):
+
+    list_display = ('name', 'email', 'active', 'post')
+    list_filter = ('name', 'email', 'created_on', 'active')
+    search_fields = ('name', 'email')
+
+    actions = ['approve_comments']
+
+    def approve_comments(self, request, queryset):
+        queryset.update(active=True)
+
 admin.site.register(models.Contact, ContactAdmin)
 admin.site.register(models.Blog, BlogAdmin)
+admin.site.register(models.WebContent, WebContentAdmin)
+admin.site.register(models.Comment, CommentAdmin)
 admin.site.site_header = "Mariakani Secondary School Admin Panel"
 admin.site.index_title = "Mariseco Admin"

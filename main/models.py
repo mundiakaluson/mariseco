@@ -23,4 +23,32 @@ class Contact(models.Model):
     def __str__(self):
         return self.sender_name
     
+
+class WebContent(models.Model):
+
+    principles = models.TextField(help_text="This is the 'Principles' section on the first page.")
+    location = models.TextField(help_text="Location of the school")
+    mission = models.TextField(help_text="Mission of the school")
+
+    form_one_stream = models.TextField(help_text="Form one Slogan")
+    form_two_stream = models.TextField(help_text="Form two slogan")
+    form_three_stream = models.TextField(help_text="Form three slogan")
+    form_four_stream = models.TextField(help_text="Form four slogan")
+
+    bom_message = models.TextField(help_text="Message from BOM to parents and students.")
+
+class Comment(models.Model):
+
+    post = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments', null=True, blank=True)
+    name = models.CharField(max_length=128)
+    email = models.EmailField()
+    comment = models.TextField()
+    created_on = models.DateTimeField(null=True, blank=True)
+    active = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return 'Comment by {} waiting for approval!'.format(self.name)
     

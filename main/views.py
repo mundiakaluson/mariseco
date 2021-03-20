@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Blog, Contact
+from .models import Blog, Contact, WebContent, Comment
 from django.utils import timezone
+from .forms import CommentForm
 
 # Create your views here.
 def index(request):
-    articles = Blog.objects.all()
-    return render(request, 'main/index.html', {'articles': articles})
+    web_content = get_object_or_404(WebContent)
+    return render(request, 'main/index.html', {"web_content": web_content})
 
 def blog(request):
     articles = Blog.objects.all()
@@ -13,7 +14,19 @@ def blog(request):
 
 def article_details(request, blog_id):
     article = get_object_or_404(Blog, pk=blog_id)
-    return render(request, 'main/article_details.html', {"article": article})
+    user_comments = Comment.objects.all()
+    if request.method == 'POST':
+        if request.POST['user_name'] and request.POST['user_email'] and request.POST['user_comment']:
+            comments = Comment()
+            comments.name = request.POST['user_name']
+            comments.post = article
+            comments.created_on = timezone.now()
+            comments.email = request.POST['user_email']
+            comments.comment = request.POST['user_comment']
+            comments.active = False
+            comments.save()
+            return render(request, 'main/success.html')
+    return render(request, 'main/article_details.html', {"article": article, "user_comments": user_comments})
 
 def covid_stats(request):
     return render(request, 'main/covid_stats.html')
@@ -33,3 +46,7 @@ def contact(request):
             contact.save()
             return render(request, 'main/success.html')
     return render(request, 'main/contact.html')
+
+
+def login(request):
+    return render(request, 'main/login.html')

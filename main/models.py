@@ -1,5 +1,8 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
+from django.db.models.deletion import CASCADE
+from django.db.models.signals import post_save
+
 
 class Blog(models.Model):
     title = models.CharField(max_length=256, help_text='Title of the Article')
@@ -52,3 +55,29 @@ class Comment(models.Model):
     def __str__(self):
         return 'Comment by {} waiting for approval!'.format(self.name)
     
+class Profile(models.Model):
+
+    STAFF = (
+
+        ('Admin', 'Admin'),
+        ('Principal', 'Principa'),
+        ('Deputy', 'Deputy'),
+        ('Dean', 'Dean'),
+        ('Academic Mistress', 'Academic Mistress'),
+        ('Boarding Master', 'Boarding Master'),
+        ('ICT', 'ICT'),
+        ('Teacher', 'Teacher'),
+    )
+
+    user = models.OneToOneField(User, on_delete=CASCADE, related_name='user_profile', null=True)
+    name = models.CharField(max_length=64, blank=True, null=True)
+    staff_level = models.CharField(max_length=128, choices=STAFF, help_text='The level of the registered staff')
+
+    def __unicode__(self):
+        return u'Profile of user: %s' % self.user.username
+
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        profile, created = Profile.objects.get_or_create(user=instance)
+
+post_save.connect(create_user_profile, sender=User)

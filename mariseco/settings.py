@@ -57,7 +57,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mariseco.wsgi.application'
-
+AUTH_PROFILE_MODULE = 'main.Profile'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases

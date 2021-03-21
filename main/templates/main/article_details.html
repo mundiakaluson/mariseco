@@ -42,7 +42,7 @@
               <ul class="list-inline text-center color-a">
                 <li class="list-inline-item mr-2">
                   <strong>Author: </strong>
-                  <span class="color-text-a"> {{ article.user }}</span>
+                  <span class="color-text-a"> {{ article.user | capfirst }}</span>
                 </li>
                 <li class="list-inline-item mr-2">
                   <strong>Category: </strong>
@@ -92,20 +92,22 @@
           </div>
             <div class="col-md-10 offset-md-1 col-lg-10 offset-lg-1">
             <div class="title-box-d">
-              <h3 class="title-d">Comments (4)</h3>
+              <h3 class="title-d">Comments ({{ comment_count }})</h3>
             </div>
             <div class="box-comments">
               <ul class="list-comments">
               {% for user_comment in user_comments.all %}
+              {% if article.id %}
                 <li>
                   <div class="comment-details">
-                    <h4 class="comment-author"> {{ user_comment.name }}</h4>
+                    <h4 class="comment-author"> {{ user_comment.name | capfirst }}</h4>
                     <span>{{ user_comment.created_on }}</span>
                     <p class="comment-description">
                       {{ user_comment.comment }}
                     </p>
                   </div>
                 </li>
+                {% endif %}
                 {% endfor %}
               </ul>
             </div>

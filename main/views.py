@@ -1,7 +1,9 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Blog, Contact, WebContent, Comment
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Blog, Contact, WebContent, Comment, Profile
 from django.utils import timezone
 from .forms import CommentForm
+from django.contrib import auth
+from django.contrib.auth.models import User
 
 # Create your views here.
 def index(request):
@@ -15,6 +17,7 @@ def blog(request):
 def article_details(request, blog_id):
     article = get_object_or_404(Blog, pk=blog_id)
     user_comments = Comment.objects.all()
+    comment_count = Comment.objects.all().count()
     if request.method == 'POST':
         if request.POST['user_name'] and request.POST['user_email'] and request.POST['user_comment']:
             comments = Comment()
@@ -26,7 +29,7 @@ def article_details(request, blog_id):
             comments.active = False
             comments.save()
             return render(request, 'main/success.html')
-    return render(request, 'main/article_details.html', {"article": article, "user_comments": user_comments})
+    return render(request, 'main/article_details.html', {"article": article, "user_comments": user_comments, "comment_count": comment_count})
 
 def covid_stats(request):
     return render(request, 'main/covid_stats.html')
@@ -49,4 +52,51 @@ def contact(request):
 
 
 def login(request):
+    if request.method == 'POST':
+        user = auth.authenticate(username=request.POST['username'], password=request.POST['password'])
+
+        if user is not None:
+            auth.login(request, user)
+            return redirect('home')
+        elif user is None:
+            return render(request, 'main/login.html', {'error': 'Please contact your Admin to get a account!!'})
     return render(request, 'main/login.html')
+
+def register(request):
+    if request.method == 'POST':
+        
+        if request.POST['password1'] == request.POST['password2']:
+
+            try:
+                user = User.objects.get(username=request.POST['username'])
+                return render(request, 'main/register.html', {'error': 'Username is Taken!'})
+
+            except User.DoesNotExist:
+                user = User.objects.create_user(
+                    request.POST['username'], password=request.POST['password1'], email=request.POST['email'])
+                user.is_active = False
+                user_info = Profile()
+                user_info.staff_level = request.POST['staff_level']
+                user_info.name = request.POST['username']
+                user.save()
+                user_info.save()
+                auth.login(request, user)
+                return redirect('approval')
+        else:
+            return render(request, 'main/register.html', {'error': 'Passwords must match!'})
+
+    else:
+        return render(request, 'main/register.html')
+    return render(request, 'main/register.html')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('home')
+
+def profile(request):
+    info = Profile.objects.get(user=request.user)
+    #info = Profile.objects.get(user=request.user)
+    return render(request, 'main/profile.html', {'info': info})
+
+def approval(request):
+    return render(request, 'main/approval.html')

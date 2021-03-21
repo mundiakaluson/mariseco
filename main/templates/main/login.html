@@ -1,5 +1,63 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Staff Area</h1>
+              <span class="color-text-a">Unregistered account should contact the admin for manual registration and configuration.</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{% url 'home' %}">Back to Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Login
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+    </section>
 
+    <div class="container">
+    <div class="row">
+    <div class="col-md-6">
+    {% if user.is_authenticated %}
+
+    <p style="color: green;">Login Successful.</p>
+
+    {% elif error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form class="form-a" action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+
+    <div class="col-sm">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelpId" placeholder="Your Username">
+    </div>
+    </div>
+    <br>
+    <div class="col-sm">
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+    </div>
+    </div>
+    <br>
+    <span class="color-text-a">Don't have a staff account? Register one<span class="color-b"> <a href="{% url 'register' %}"> here!</a></span</span>
+    <br>
+    <br>
+    <button type="submit" class="btn btn-a">Login</button>
+    </form>
+    </div>
+    </div>
+    </div>
 {% endblock %}

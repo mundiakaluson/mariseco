@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Get Your Staff Account!</h1>
+              <span class="color-text-a">Accounts Registering will remain pending until the Admin approves!</span><br>
+              <span class="color-text-a">Kindly contact the Admin if your approval is still pending.</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{% url 'home' %}">Back to Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Register Staff Account
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+    </section>
+
+    <div class="container">
+    <div class="row">
+    <div class="col-md-6">
+    <div class="col-sm">
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form class="form-a" action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="email">Username</label>
+      <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelpId" placeholder="This will be your default login parameter. Make it short and memorable.">
+    </div>
+    </div>
+    <br>
+    <div class="col-sm">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId" placeholder="Your Username">
+    </div>
+    </div>
+    <br>
+    <div class="col-sm">
+    <div class="form-group">
+      <label for="email">Password</label>
+      <input type="password" class="form-control" name="password1" aria-describedby="emailHelpId" placeholder="Type your Password">
+    </div>
+    </div>
+    <br>
+    <input type="text" class="form-control" name="staff_level" value="Teacher" hidden>
+    <div class="col-sm">
+    <div class="form-group">
+      <label for="password">Confirm Password</label>
+      <input type="password" class="form-control" name="password2" placeholder="Retype your Password">
+    </div>
+    </div>
+    <br>
+    <span class="color-text-a">Already Registered?<span class="color-b"> <a href="{% url 'login' %}"> Login!</a></span</span>
+    <br>
+    <br>
+    <button type="submit" class="btn btn-a">Register</button>
+    </form>
+    </div>
+    </div>
+    </div>
+{% endblock  %}

@@ -26,9 +26,14 @@ class CommentAdmin(admin.ModelAdmin):
     def approve_comments(self, request, queryset):
         queryset.update(active=True)
 
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('staff_level', 'name')
+    list_filter = ('staff_level', 'name')
+
 admin.site.register(models.Contact, ContactAdmin)
 admin.site.register(models.Blog, BlogAdmin)
 admin.site.register(models.WebContent, WebContentAdmin)
 admin.site.register(models.Comment, CommentAdmin)
+admin.site.register(models.Profile, ProfileAdmin)
 admin.site.site_header = "Mariakani Secondary School Admin Panel"
 admin.site.index_title = "Mariseco Admin"

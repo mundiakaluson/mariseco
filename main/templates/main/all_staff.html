@@ -25,4 +25,27 @@
           </div>
         </div>
     </section>
+
+    <div class="container">
+    <div class="col-md-10 offset-md-1 col-lg-10 offset-lg-1">
+            <div class="title-box-d">
+              <h3 class="title-d">Active Staff are {{ user_count }}</h3>
+            </div>
+            <div class="box-comments">
+              <ul class="list-comments">
+              {% for user in users.all %}
+                <li>
+                  <div class="comment-details">
+                    <h3 class="comment-author"> {{ user.username | capfirst }}</h3>
+                    <span>{{ user.email }}</span>
+                    <p class="comment-description">
+                      {{ user.is_active }}
+                    </p>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            </div>
+        </div>
 {% endblock %}

@@ -5,6 +5,7 @@ from .forms import CommentForm
 from django.contrib import auth
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
 
 def index(request):
     web_content = get_object_or_404(WebContent)
@@ -131,12 +132,13 @@ def delete(request, username):
         user.delete()
         user.save()
         context['deletion_message'] = 'User deleted successfully!'
-        return render(request, 'main/sucess.html')
+        return render(request, 'main/delete_or_deactivate_success.html')
     except User.DoesNotExist:
         context['error_message'] = 'User does not exist!!!'
 
     return render(request, 'main/profile.html', context=context)
 
+@login_required
 def deactivate(request, username):
     context = {}
 
@@ -145,14 +147,17 @@ def deactivate(request, username):
         user.is_active = False
         user.save()
         context['deactivation_message'] = 'Account Deactivated Successfully!'
-        return render(request, 'main/success.html')
+        return render(request, 'main/delete_or_deactivate_success.html')
     except User.DoesNotExist:
         context['error_message'] = 'User does not exist!!!'
     return render(request, 'main/profile.html', context=context)
 
+@login_required
 def all_staff(request):
-    return render(request, 'main/all_staff')
+    users = get_user_model().objects.all()
+    user_count = User.objects.all().count()
+    return render(request, 'main/all_staff.html', {'users': users, 'user_count': user_count})
 
-
+@login_required
 def delete_or_deactivate_success(request):
     return render(request, 'main/delete_or_deactivate_success.html')

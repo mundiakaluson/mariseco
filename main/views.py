@@ -4,6 +4,7 @@ from django.utils import timezone
 from .forms import CommentForm
 from django.contrib import auth
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -100,3 +101,23 @@ def profile(request):
 
 def approval(request):
     return render(request, 'main/approval.html')
+
+@login_required
+def create(request):
+
+    if request.method == 'POST':
+        if request.POST['title'] and request.POST['tag'] and request.POST['headline'] and request.POST['content']:
+            article = Blog()
+            article.user = request.user
+            article.title = request.POST['title']
+            article.tag = request.POST['tag']
+            article.headline = request.POST['headline']
+            article.content = request.POST['content']
+            article.created_at = timezone.now()
+            article.save()
+            return render(request, 'main/article_success.html')
+    return render(request, 'main/create.html')
+
+
+def article_success(request):
+    return render(request, 'main/article_success.html')

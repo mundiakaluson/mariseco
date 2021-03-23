@@ -27,7 +27,6 @@
     </section>
 
     <div class="container emp-profile">
-            <form method="post">
                 <div class="row">
                 </div>
                 <div class="row">
@@ -73,9 +72,17 @@
                                                 <p>{{ info.staff_level }}</p>
                                             </div>
                                         </div>
+                                        <div class="col-md-6 color-b">
+                                        <a href="{% url 'create' %}">
+                                        <button type="submit" class="btn btn-a">Write a Blog</button>
+                                        </a>
+                                        </div>
+                                        <br>
+                                        <div class="col-md-6 color-b">
+                                                <label>Blog written will be submitted to the admin for reviewal. Once your blog is approved it will be published to the Mariseco Community!</label>
+                                        </div>
                         </div>
                     </div>
                 </div>
-            </form>           
         </div>
 {% endblock %}

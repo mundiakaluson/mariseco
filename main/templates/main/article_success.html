@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Success! </span></h1>
+              <span class="color-text-a">Your Article has been subimtted successfully {{ user | capfirst}}!.</span> <br>
+              <span class="color-text-a">Please wait while the Admin checks it. Happy Writing!</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{% url 'home' %}">Back to Home</a>
+                </li>
+                <li class="breadcrumb-item active " aria-current="page">
+                  Article by {{ user | capfirst }} a Success!
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+    </section>
+
+    <div class="jumbotron text-center">
+    <h1 class="display-3">Content Posted!</h1>
+    <p class="lead"><strong>2 - 5 days</strong> is the maximum article reviewal time. Contant the admin once this time is depleted!</p>
+    <p class="lead">Please wait while the server redirects you to the homepage!</p>
+    <script>
+        var timer = setTimeout(function() {
+            window.location="{% url 'home' %}"
+        }, 4000);
+    </script>
+    <hr>
+    </div>
+{% endblock %}

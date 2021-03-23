@@ -67,6 +67,9 @@
             <a class="nav-link" href="{% url 'profile' %}">Logged in As: <span class="color-b"> {{ user | capfirst }}</span></a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{% url 'create' %}">Post an Article!</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
           </li>
         </ul>

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Write an Article! </span></h1>
+              <span class="color-text-a">Writing Articles is aimed at giving staff the Ability to communicate their ideas to the MariSeco Community.</span> <br>
+              <span class="color-text-a">Articles should be informative and interesting.</span>
+              <span class="color-text-a">Give it your best shot {{ user | capfirst }}!</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{% url 'home' %}">Back to Home</a>
+                </li>
+                <li class="breadcrumb-item active " aria-current="page">
+                  {{ user | capfirst}}'s Article Portal
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+    </section>
+
+    <section class="contact">
+    <div class="container">
+    <div class="row">
+    <div class="form-comments">
+    <div class="title-box-d">
+      <h3 class="title-d">Write Your Article Here.</h3>
+    </div>
+    <form class="form-a" action="{% url 'create' %}" method='POST'>
+    {% csrf_token %}
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <div class="form-group">
+            <label for="inputName">Article Title</label>
+            <input type="text" name="title" class="form-control form-control-lg form-control-a" id="inputName" placeholder="The Name of your Article *" required>
+          </div>
+        </div>
+        <div class="col-md-12 mb-3">
+          <div class="form-group">
+            <label for="inputEmail1">Tag</label>
+            <input type="text" name="tag" class="form-control form-control-lg form-control-a" id="inputEmail1" placeholder="Tags are meant to help your readers know what content they will be reading. E.g: Sports, Education, IT, Examinations *" required>
+          </div>
+        </div>
+        <div class="col-md-12 mb-3">
+          <div class="form-group">
+            <label for="inputEmail1">Headline</label>
+            <input type="text" name="headline" class="form-control form-control-lg form-control-a" id="inputEmail1" placeholder="Headlines are used to Welcome readers in your article. Make it interesting! :) *" required>
+          </div>
+        </div>
+        <div class="col-md-12 mb-3">
+          <div class="form-group">
+            <label for="textMessage">Article Content</label>
+            <textarea id="textMessage" class="form-control" placeholder="Write your article content here *" name="content" cols="45" rows="8" required></textarea>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-a">Submit Article for Reviewal!</button>
+        </div>
+      </div>
+    </form>
+    </div>
+    </div>
+    </div>
+    </section>
+{% endblock %}

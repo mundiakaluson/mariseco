@@ -16,5 +16,7 @@ urlpatterns = [
     path('create', views.create, name='create'), 
     path('article_success', views.article_success, name='article_success'),
     path('delete/<str:username>/', views.delete, name='delete'),
+    path('delete_or_deactivate_success', views.delete_or_deactivate_success, name='delete_or_deactivate_success'),
     path('deactivate/<str:username>/', views.deactivate, name='deactivate'),
+    path('all_staff', views.all_staff, name='all_staff'),
 ]

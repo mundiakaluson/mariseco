@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Hi <span class="color-b">{{ user | capfirst }}</span></h1>
+              <span class="color-text-a">Below are all staff registered on the MariSeco website.</span> <br>
+              <span class="color-text-a">This is for the purpose of security. If you see any suspicious account kindly contact the admin!</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{% url 'home' %}">Back to Home</a>
+                </li>
+                <li class="breadcrumb-item active " aria-current="page">
+                  All Staff
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+    </section>
+{% endblock %}

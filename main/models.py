@@ -60,7 +60,7 @@ class Profile(models.Model):
     STAFF = (
 
         ('Admin', 'Admin'),
-        ('Principal', 'Principa'),
+        ('Principal', 'Principal'),
         ('Deputy', 'Deputy'),
         ('Dean', 'Dean'),
         ('Academic Mistress', 'Academic Mistress'),

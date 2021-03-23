@@ -79,28 +79,34 @@
                                         </a>
                                         </div>
                                         <div class="col-md-6 color-b">
-                                        <a href="{% url 'logout' %}">
-                                        <button type="submit" class="btn btn-a">Sign Out</button>
+                                        <a href="{% url 'blog' %}">
+                                        <button type="submit" class="btn btn-a">Read Available Blogs</button>
                                         </a>
                                         </div>
                                         </div>
                                         <br>
+                                        <div class="row">
                                         <div class="col-md-6 color-b">
                                                 <label>Blog written will be submitted to the admin for reviewal. Once your blog is approved it will be published to the Mariseco Community!</label>
+                                        </div>
+                                        <div class="col-md-6 color-b">
+                                        <a href="{% url 'deactivate' user %}">
+                                        <button type="submit" class="btn btn-a">View All Staff</button>
+                                        </a>
+                                        </div>
                                         </div>
                                         <br>
                                         <p> Account Settings</p>
                                         <hr>
                                         <div class="row">
-                                        {{ username }}
                                         <div class="col-md-6 color-b">
-                                        <a href="{% url 'deactivate' username %}">
-                                        <button type="submit" class="btn btn-a">Deactivate</button>
+                                        <a href="{% url 'deactivate' user %}">
+                                        <button type="submit" class="btn btn-a" style="color: maroon;">Deactivate Account</button>
                                         </a>
                                         </div>
                                         <div class="col-md-6 color-b">
-                                        <a href="{% url 'delete' username %}">
-                                        <button type="submit" class="btn btn-a">Delete</button>
+                                        <a href="{% url 'delete' user %}">
+                                        <button type="submit" class="btn btn-a" style="color: red;">Terminate Account</button>
                                         </a>
                                         </div>
                                         </div>
@@ -111,6 +117,19 @@
                                         <br>
                                         <div class="col-md-12 color-b">
                                                 <label>Deleting your account will result to a permanent <span style="color: red;"> TERMINATION! </span>All your articles will be deleted as well!!</label>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                        <div class="col-md-6 color-b">
+                                        <a href="{% url 'logout' %}">
+                                        <button type="submit" class="btn btn-a">Sign Out</button>
+                                        </a>
+                                        </div>
+                                        <div class="col-md-6 color-b">
+                                        <a href="{% url 'logout' %}">
+                                        <button type="submit" class="btn btn-a">Edit Profile</button>
+                                        </a>
+                                        </div>
                                         </div>
                         </div>
                     </div>

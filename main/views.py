@@ -149,3 +149,10 @@ def deactivate(request, username):
     except User.DoesNotExist:
         context['error_message'] = 'User does not exist!!!'
     return render(request, 'main/profile.html', context=context)
+
+def all_staff(request):
+    return render(request, 'main/all_staff')
+
+
+def delete_or_deactivate_success(request):
+    return render(request, 'main/delete_or_deactivate_success.html')

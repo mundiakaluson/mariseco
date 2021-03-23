@@ -94,9 +94,9 @@ def logout(request):
     return redirect('home')
 
 def profile(request):
+    user = User.objects.get(username=request.user)
     info = Profile.objects.get(user=request.user)
-    #info = Profile.objects.get(user=request.user)
-    return render(request, 'main/profile.html', {'info': info})
+    return render(request, 'main/profile.html', {'info': info, 'user': user})
 
 def approval(request):
     return render(request, 'main/approval.html')

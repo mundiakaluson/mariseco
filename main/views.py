@@ -6,7 +6,6 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
 def index(request):
     web_content = get_object_or_404(WebContent)
     return render(request, 'main/index.html', {"web_content": web_content})
@@ -94,6 +93,7 @@ def logout(request):
     auth.logout(request)
     return redirect('home')
 
+@login_required
 def profile(request):
     user = User.objects.get(username=request.user)
     info = Profile.objects.get(user=request.user)
@@ -118,6 +118,34 @@ def create(request):
             return render(request, 'main/article_success.html')
     return render(request, 'main/create.html')
 
-
+@login_required
 def article_success(request):
     return render(request, 'main/article_success.html')
+
+@login_required
+def delete(request, username):
+    context = {}
+
+    try:
+        user = User.objects.get(username=username) 
+        user.delete()
+        user.save()
+        context['deletion_message'] = 'User deleted successfully!'
+        return render(request, 'main/sucess.html')
+    except User.DoesNotExist:
+        context['error_message'] = 'User does not exist!!!'
+
+    return render(request, 'main/profile.html', context=context)
+
+def deactivate(request, username):
+    context = {}
+
+    try:
+        user = User.objects.get(username=username)
+        user.is_active = False
+        user.save()
+        context['deactivation_message'] = 'Account Deactivated Successfully!'
+        return render(request, 'main/success.html')
+    except User.DoesNotExist:
+        context['error_message'] = 'User does not exist!!!'
+    return render(request, 'main/profile.html', context=context)

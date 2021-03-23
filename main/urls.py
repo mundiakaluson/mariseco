@@ -15,4 +15,6 @@ urlpatterns = [
     path('approval', views.approval, name='approval'),
     path('create', views.create, name='create'), 
     path('article_success', views.article_success, name='article_success'),
+    path('delete/<str:username>/', views.delete, name='delete'),
+    path('deactivate/<str:username>/', views.deactivate, name='deactivate'),
 ]

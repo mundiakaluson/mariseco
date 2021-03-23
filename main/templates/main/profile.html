@@ -72,14 +72,45 @@
                                                 <p>{{ info.staff_level }}</p>
                                             </div>
                                         </div>
+                                        <div class="row">
                                         <div class="col-md-6 color-b">
                                         <a href="{% url 'create' %}">
-                                        <button type="submit" class="btn btn-a">Write a Blog</button>
+                                        <button type="submit" class="btn btn-a">Publish Blogs</button>
                                         </a>
+                                        </div>
+                                        <div class="col-md-6 color-b">
+                                        <a href="{% url 'logout' %}">
+                                        <button type="submit" class="btn btn-a">Sign Out</button>
+                                        </a>
+                                        </div>
                                         </div>
                                         <br>
                                         <div class="col-md-6 color-b">
                                                 <label>Blog written will be submitted to the admin for reviewal. Once your blog is approved it will be published to the Mariseco Community!</label>
+                                        </div>
+                                        <br>
+                                        <p> Account Settings</p>
+                                        <hr>
+                                        <div class="row">
+                                        {{ username }}
+                                        <div class="col-md-6 color-b">
+                                        <a href="{% url 'deactivate' username %}">
+                                        <button type="submit" class="btn btn-a">Deactivate</button>
+                                        </a>
+                                        </div>
+                                        <div class="col-md-6 color-b">
+                                        <a href="{% url 'delete' username %}">
+                                        <button type="submit" class="btn btn-a">Delete</button>
+                                        </a>
+                                        </div>
+                                        </div>
+                                        <br>
+                                        <div class="col-md-12 color-b">
+                                                <label>Deactivating your Account will result to a <span style="color: red;"> FREEZE! </span>You will need to contact the admin to have your account re-activated.</label>
+                                        </div>
+                                        <br>
+                                        <div class="col-md-12 color-b">
+                                                <label>Deleting your account will result to a permanent <span style="color: red;"> TERMINATION! </span>All your articles will be deleted as well!!</label>
                                         </div>
                         </div>
                     </div>

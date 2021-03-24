@@ -20,6 +20,7 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'blog', 'created_on', 'comment', 'active')
     list_filter = ('created_on', 'active')
     search_fields = ('name', 'email')
+    readonly_fields = ('name', 'email', 'created_on', 'blog')
 
     actions = ['approve_comments', 'dissaprove_comments']
 

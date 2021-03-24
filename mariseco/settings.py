@@ -19,6 +19,8 @@ ALLOWED_HOSTS = ['4e1d82dc79f8.ngrok.io', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_interface',
+    'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -27,6 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main'
 ]
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

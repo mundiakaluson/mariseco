@@ -30,8 +30,9 @@ def article_details(request, blog_id):
             comments.active = False
             comments.save()
             print("[200] Comment Posted and Disabled")
-            return render(request, 'main/article_details.html', {"article": article, "comment_count": comment_count, "approved_comments": approved_comments})
+            return render(request, 'main/comment_success.html', {"article": article, "comment_count": comment_count, "approved_comments": approved_comments})
     return render(request, 'main/article_details.html', {"article": article, "comment_count": comment_count, "approved_comments": approved_comments})
+
 
 def covid_stats(request):
     return render(request, 'main/covid_stats.html')

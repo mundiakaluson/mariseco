@@ -12,7 +12,7 @@ def index(request):
     return render(request, 'main/index.html', {"web_content": web_content})
 
 def blog(request):
-    articles = Blog.objects.all()
+    articles = Blog.objects.filter(published=True)
     return render(request, 'main/blog.html', {"articles": articles})
 
 def article_details(request, blog_id):
@@ -29,6 +29,7 @@ def article_details(request, blog_id):
             comments.comment = request.POST['user_comment']
             comments.active = False
             comments.save()
+            print("[200] Comment Posted and Disabled")
             return render(request, 'main/article_details.html', {"article": article, "comment_count": comment_count, "approved_comments": approved_comments})
     return render(request, 'main/article_details.html', {"article": article, "comment_count": comment_count, "approved_comments": approved_comments})
 
@@ -100,12 +101,26 @@ def profile(request):
     info = Profile.objects.get(user=request.user)
     return render(request, 'main/profile.html', {'info': info, 'user': user})
 
+def edit_profile(request):
+    info = Profile.objects.get(user=request.user)
+    return render(request, 'main/edit_profile.html', {'info': info})
+
+def update_profile(request):
+    info = Profile.objects.get(user=request.user)
+    if request.method == 'POST':
+        if request.POST['update_name'] and request.POST['update_email']:
+            update_user = User.objects.get(username=request.user)
+            update_user.username = request.POST['update_name']
+            update_user.email = request.POST['update_email']
+            update_user.save()
+            return render(request, 'main/profile.html', {'success': 'Profile Update Sucessfully!'})
+    return render(request, 'main/profile.html', {'info': info})
+
 def approval(request):
     return render(request, 'main/approval.html')
 
 @login_required
 def create(request):
-
     if request.method == 'POST':
         if request.POST['title'] and request.POST['tag'] and request.POST['headline'] and request.POST['content']:
             article = Blog()
@@ -115,6 +130,7 @@ def create(request):
             article.headline = request.POST['headline']
             article.content = request.POST['content']
             article.created_at = timezone.now()
+            article.active = False
             article.save()
             return render(request, 'main/article_success.html')
     return render(request, 'main/create.html')

@@ -27,8 +27,9 @@
     </section>
 
     <div class="container emp-profile">
-                <div class="row">
-                </div>
+        {% if success %}
+        <p style="color: green;">{{ sucess }}</p>        
+        {% endif %}
                 <div class="row">
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
@@ -126,7 +127,7 @@
                                         </a>
                                         </div>
                                         <div class="col-md-6 color-b">
-                                        <a href="{% url 'logout' %}">
+                                        <a href="{% url 'edit_profile' %}">
                                         <button type="submit" class="btn btn-a" style="width: 250px;">Edit Profile</button>
                                         </a>
                                         </div>

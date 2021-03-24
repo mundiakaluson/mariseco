@@ -12,6 +12,7 @@ class Blog(models.Model):
     content = models.TextField(help_text='Content of the article, this is not limited.')
     user = models.ForeignKey(User, on_delete=models.CASCADE, help_text='Article Publisher')
     created_at = models.DateField(help_text='Date of Publishement')
+    published = models.BooleanField(help_text='When checked, the article is live and readable to the audience.', default=False)
 
     def __str__(self):
         return self.title

@@ -3,8 +3,13 @@ from main import models
 
 class BlogAdmin(admin.ModelAdmin):
 
-    list_display = ('title', 'tag', 'user', 'created_at')
+    list_display = ('title', 'tag', 'user', 'created_at', 'published')
     list_filter = ('tag', 'created_at')
+
+    actions = ['published']
+
+    def published(self, request, queryset):
+        queryset.update(published=True)
 
 class ContactAdmin(admin.ModelAdmin):
 

@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single"> {{ user | capfirst }}'s <span class="color-b">Profile </span></h1>
+              <span class="color-text-a">This is a Staff Account allowing owners to write a post Articles.</span> <br>
+              <span class="color-text-a">Contact your Admin to change information concerning your Account.</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{% url 'home' %}">Back to Home</a>
+                </li>
+                <li class="breadcrumb-item active " aria-current="page">
+                  {{ user | capfirst }}
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+    </section>
+
+    <div class="container emp-profile">
+            <form action="{% url 'update_profile' %}" method="POST">
+            {% csrf_token %}
+            
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                                        <div class="row">
+                                            <div class="col-md-6 color-b">
+                                                <label>Your Id</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{ user.id }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 color-b">
+                                                <label>Username</label>
+                                            </div>
+                                        <div class="col-md-6 mb-3">
+                                        <div class="form-group">
+                                            <input type="text" name="update_name" class="form-control form-control-lg form-control-a" placeholder="Updated Username">
+                                        </div>
+                                        <p> Current Username: <span class="color-b">{{ user }} </span></p>
+                                        </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 color-b">
+                                                <label>Email</label>
+                                            </div>
+                                        <div class="col-md-6 mb-3">
+                                        <div class="form-group">
+                                            <input type="text" name="update_email" class="form-control form-control-lg form-control-a" placeholder="Updated Email">
+                                        </div>
+                                        <p> Current Email: <span class="color-b"> {{ user.email }}</span> </p>
+                                        </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 color-b">
+                                                <label>Date Registered</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{ user.date_joined }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 color-b">
+                                                <label>Staff Level</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{ info.staff_level }}</p>
+                                            </div>
+                                            <p>Contact the Admin to initiate a Staff Level change. Staff Level change is altered only at an official level.</p>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                        <div class="col-md-6 color-b">
+                                        <a href="{% url 'update_profile' %}">
+                                        <button type="submit" class="btn btn-a" style="width: 250px;">Update Profile</button>
+                                        </a>
+                                        </div>
+                                        </div>
+                                        <br>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+{% endblock %}

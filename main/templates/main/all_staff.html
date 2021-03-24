@@ -15,7 +15,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="{% url 'home' %}">Back to Home</a>
+                  <a href="{% url 'profile' %}">Back to Your Profile</a>
                 </li>
                 <li class="breadcrumb-item active " aria-current="page">
                   All Staff
@@ -27,25 +27,54 @@
     </section>
 
     <div class="container">
-    <div class="col-md-10 offset-md-1 col-lg-10 offset-lg-1">
-            <div class="title-box-d">
-              <h3 class="title-d">Active Staff are {{ user_count }}</h3>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-uppercase mb-0">Our Registered Staff</h5>
             </div>
-            <div class="box-comments">
-              <ul class="list-comments">
-              {% for user in users.all %}
-                <li>
-                  <div class="comment-details">
-                    <h3 class="comment-author"> {{ user.username | capfirst }}</h3>
-                    <span>{{ user.email }}</span>
-                    <p class="comment-description">
-                      {{ user.is_active }}
-                    </p>
-                  </div>
-                </li>
-                {% endfor %}
-              </ul>
+            <hr>
+            <div class="table-responsive">
+                <table class="table no-wrap user-table mb-0">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Username</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Staff Level</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Contact</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Registered</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Last Seen</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for user in users.all %}
+                    <tr>
+                      <td>
+                          <h5 class="font-medium mb-0">{{ user.username | capfirst }}</h5>
+                      </td>
+                      <td>
+                          <span class="text-muted">Some info</span><br>
+                      </td>
+                      <td>
+                          <span class="text-muted">{{ user.email }}</span><br>
+                      </td>
+                      <td>
+                          <span class="text-muted">{{ user.date_joined }}</span><br>
+                      </td>
+                      <td>
+                        <span class="text-muted">{{ user.last_login }}</span>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                    
+                  </tbody>
+                </table>
+                
             </div>
-            </div>
+        </div>
+</div>
+</div>
         </div>
 {% endblock %}

@@ -96,18 +96,16 @@
             </div>
             <div class="box-comments">
               <ul class="list-comments">
-              {% for user_comment in user_comments.all %}
-              {% if article.id %}
-                <li>
+               {% for approved_comment in approved_comments.all %}
+                  <li>
                   <div class="comment-details">
-                    <h4 class="comment-author"> {{ user_comment.name | capfirst }}</h4>
-                    <span>{{ user_comment.created_on }}</span>
+                    <h4 class="comment-author"> {{ approved_comment.name | capfirst }}</h4>
+                    <span>{{ approved_comment.created_on }}</span>
                     <p class="comment-description">
-                      {{ user_comment.comment }}
+                      {{ approved_comment.comment }}
                     </p>
                   </div>
                 </li>
-                {% endif %}
                 {% endfor %}
               </ul>
             </div>
@@ -119,6 +117,7 @@
     <form class="form-a" action="{% url 'article_details' article.id %}" method='POST'>
     {% csrf_token %}
       <div class="row">
+      <input type="hidden" name="article_title" value="{{ article.comments.id }}">
         <div class="col-md-6 mb-3">
           <div class="form-group">
             <label for="inputName">Enter name</label>

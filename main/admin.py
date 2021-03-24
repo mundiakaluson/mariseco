@@ -17,14 +17,17 @@ class WebContentAdmin(admin.ModelAdmin):
 
 class CommentAdmin(admin.ModelAdmin):
 
-    list_display = ('name', 'email', 'active', 'post')
-    list_filter = ('name', 'email', 'created_on', 'active')
+    list_display = ('name', 'email', 'blog', 'created_on', 'comment', 'active')
+    list_filter = ('created_on', 'active')
     search_fields = ('name', 'email')
 
-    actions = ['approve_comments']
+    actions = ['approve_comments', 'dissaprove_comments']
 
     def approve_comments(self, request, queryset):
         queryset.update(active=True)
+
+    def dissaprove_comments(self, request, queryset):
+        queryset.update(active=False)
 
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('staff_level', 'name')

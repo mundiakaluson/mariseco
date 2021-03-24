@@ -17,20 +17,20 @@ def blog(request):
 
 def article_details(request, blog_id):
     article = get_object_or_404(Blog, pk=blog_id)
-    user_comments = Comment.objects.all()
-    comment_count = Comment.objects.all().count()
+    comment_count = article.comments.filter(active=True).count()
+    approved_comments = article.comments.filter(active=True)
     if request.method == 'POST':
         if request.POST['user_name'] and request.POST['user_email'] and request.POST['user_comment']:
             comments = Comment()
             comments.name = request.POST['user_name']
-            comments.post = article
+            comments.blog = article
             comments.created_on = timezone.now()
             comments.email = request.POST['user_email']
             comments.comment = request.POST['user_comment']
             comments.active = False
             comments.save()
-            return render(request, 'main/success.html')
-    return render(request, 'main/article_details.html', {"article": article, "user_comments": user_comments, "comment_count": comment_count})
+            return render(request, 'main/article_details.html', {"article": article, "comment_count": comment_count, "approved_comments": approved_comments})
+    return render(request, 'main/article_details.html', {"article": article, "comment_count": comment_count, "approved_comments": approved_comments})
 
 def covid_stats(request):
     return render(request, 'main/covid_stats.html')

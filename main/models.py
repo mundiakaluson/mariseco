@@ -42,7 +42,7 @@ class WebContent(models.Model):
 
 class Comment(models.Model):
 
-    post = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments', null=True, blank=True)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name="comments", null=True, blank=True)
     name = models.CharField(max_length=128)
     email = models.EmailField()
     comment = models.TextField()

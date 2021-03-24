@@ -124,7 +124,7 @@ def create(request):
     if request.method == 'POST':
         if request.POST['title'] and request.POST['tag'] and request.POST['headline'] and request.POST['content']:
             article = Blog()
-            article.user = request.user
+            article.author = request.user
             article.title = request.POST['title']
             article.tag = request.POST['tag']
             article.headline = request.POST['headline']

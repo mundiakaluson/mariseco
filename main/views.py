@@ -10,7 +10,6 @@ from django.contrib import messages
 
 def index(request):
     web_content = get_object_or_404(WebContent)
-    messages.success(request, 'Login Successfull. Welcome', extra_tags='alert')
     return render(request, 'main/index.html', {"web_content": web_content})
 
 def blog(request):

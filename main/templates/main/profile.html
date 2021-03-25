@@ -132,6 +132,24 @@
                                         </a>
                                         </div>
                                         </div>
+                                        <br>
+                                        {% if request.user.is_superuser %}
+                                        <h4>CONTROL PANEL</h4>
+                                        <hr>
+                                        <div class="col-md-12 color-b">
+                                                <label>The <span class="text-dark"> Control Panel </span> is only visible to SUPERUSERS (ADMINS). This means that Admins can modify section(s) of the website without heading to their admin panels.</label>
+                                        </div>
+                                        <br>
+                                        <div class="col-md-12 color-b">
+                                                <label>Head over to the Control Panel <br> <i class="bi bi-arrow-down-circle-fill"></i></label>
+                                        </div>
+                                        <br>
+                                       <div class="col-md-6 color-b">
+                                        <a href="{% url 'control_panel' %}">
+                                        <button type="submit" class="btn btn-a" style="width: 250px;">Control Panel</button>
+                                        </a>
+                                    </div>
+                                    {% endif %}
                         </div>
                     </div>
                 </div>

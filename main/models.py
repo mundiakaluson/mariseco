@@ -84,7 +84,13 @@ class SendMail(models.Model):
     sender = models.CharField(max_length=265, null=True, blank=True)
     reciever = models.CharField(max_length=256, null=True, blank=True)
     delivery_status = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.reciever
     
+    
+    class Meta:
+        verbose_name_plural = 'Send Mail'
 
 def create_user_profile(sender, instance, created, **kwargs):
     if created:

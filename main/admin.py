@@ -1,5 +1,7 @@
 from django.contrib import admin
 from main import models
+from main.models import SendMail
+from django.core.mail import send_mail
 
 class BlogAdmin(admin.ModelAdmin):
 
@@ -42,15 +44,32 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = ('staff_level', 'name')
     list_filter = ('staff_level', 'name')
 
+
+
 class SendMailAdmin(admin.ModelAdmin):
 
-    list_display = ('subject', 'sender', 'receiver', 'deliver_status')
-    list_filter = ('delivery status')
+    list_display = ('subject', 'sender', 'reciever', 'delivery_status')
+
+    actions = ['send_email']
+
+    def send_email(self, request, queryset):
+        mail_objects = SendMail()
+        send_mail(
+            mail_objects.subject,
+            mail_objects.message,
+            mail_objects.sender,
+            [mail_objects.reciever],
+            fail_silently=False
+        )
+
+        if send_mail:
+            queryset.update(delivery_status=True)
 
 admin.site.register(models.Contact, ContactAdmin)
 admin.site.register(models.Blog, BlogAdmin)
 admin.site.register(models.WebContent, WebContentAdmin)
 admin.site.register(models.Comment, CommentAdmin)
 admin.site.register(models.Profile, ProfileAdmin)
+admin.site.register(models.SendMail, SendMailAdmin)
 admin.site.site_header = "Mariakani Secondary School Admin Panel"
 admin.site.index_title = "Mariseco Admin"

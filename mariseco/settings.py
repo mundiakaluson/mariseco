@@ -131,3 +131,4 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mundiakaluson@gmail.com'
 EMAIL_HOST_PASSWORD = '@DennisOtieno2020'
+EMAIL_USE_LOCALTIME = True

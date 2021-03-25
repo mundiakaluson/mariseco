@@ -21,4 +21,5 @@ urlpatterns = [
     path('delete_or_deactivate_success', views.delete_or_deactivate_success, name='delete_or_deactivate_success'),
     path('deactivate/<str:username>/', views.deactivate, name='deactivate'),
     path('all_staff', views.all_staff, name='all_staff'),
+    path('control_panel', views.control_panel, name='control_panel'),
 ]

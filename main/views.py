@@ -178,3 +178,9 @@ def all_staff(request):
 @login_required
 def delete_or_deactivate_success(request):
     return render(request, 'main/delete_or_deactivate_success.html')
+
+
+def control_panel(request):
+    users = get_user_model().objects.all()
+    user_count = User.objects.all().count()
+    return render(request, 'main/control_panel.html', {'users': users, 'user_count': user_count})

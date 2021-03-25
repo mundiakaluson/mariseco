@@ -42,6 +42,11 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = ('staff_level', 'name')
     list_filter = ('staff_level', 'name')
 
+class SendMailAdmin(admin.ModelAdmin):
+
+    list_display = ('subject', 'sender', 'receiver', 'deliver_status')
+    list_filter = ('delivery status')
+
 admin.site.register(models.Contact, ContactAdmin)
 admin.site.register(models.Blog, BlogAdmin)
 admin.site.register(models.WebContent, WebContentAdmin)

@@ -22,4 +22,5 @@ urlpatterns = [
     path('deactivate/<str:username>/', views.deactivate, name='deactivate'),
     path('all_staff', views.all_staff, name='all_staff'),
     path('control_panel', views.control_panel, name='control_panel'),
+    path('update_web_content', views.update_web_content, name='update_web_content'),
 ]

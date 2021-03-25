@@ -41,6 +41,8 @@ class WebContent(models.Model):
 
     bom_message = models.TextField(help_text="Message from BOM to parents and students.")
 
+    
+
 class Comment(models.Model):
 
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name="comments", null=True, blank=True)

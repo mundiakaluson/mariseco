@@ -1,15 +1,24 @@
 {% extends 'base.html' %}
-
+{% load humanize %}
 {% block content %}
 <body class="bg-dark bg-gradient text-light">
 
 <section class="intro-single">
+    {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+    {% endif %} 
+
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box">
               <h1 class="title-single text-light">Control Panel</h1>
               <span class="color-text-a text-light">This page is only visible to the Admins.</span><br>
+              
             </div>
           </div>
           <div class="col-md-12 col-lg-4">
@@ -50,8 +59,8 @@
       <td>{{ user.first_name }}</td>
       <td>{{ user.last_name }}</td>
       <td>{{ user.email }}</td>
-      <td>{{ user.last_login }}</td>
-      <td>{{ user.date_joined }}</td>
+      <td>{{ user.last_login | naturaltime }}</td>
+      <td>{{ user.date_joined | naturaltime }}</td>
     </tr>
     {% endfor %}
   </tbody>
@@ -59,36 +68,30 @@
 <hr>
     </div>
     <div class="col-12">
-    <p>Comments Waiting for Approval</p>
+    <p>Comments Waiting for Approval are <span class="color-b">{{ comment_count }}</span></p>
     <hr>
     <table class="table table-success table-striped table-hover">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Commenter Name</th>
+      <th scope="col">Commented Blog</th>
+      <th scope="col">Comment</th>
+      <th scope="col">Email</th>
+      <th scope="col">Time Commented</th>
     </tr>
   </thead>
   <tbody>
+    {% for pending_comment in pending_comments %}
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td>{{ pending_comment.name }}</td>
+      <td>{{ pending_comment.blog }}</td>
+      <td>{{ pending_comment.comment }}</td>
+      <td>{{ pending_comment.email }}</td>
+      <td>{{ pending_comment.created_on | naturaltime }}</td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    {% endfor %}
   </tbody>
+  <p>Head over to the admin interface to approve comments.</p>
 </table>
     </div>
   </div>
@@ -99,45 +102,46 @@
     <hr>
     <p>Content posted here will appear in the home page</p>
     <hr>
-    <form>
+    <form method="POST" action="{% url 'update_web_content' %}">
+    {% csrf_token %}
         <div class="col-md-12 mb-3">
             <div class="form-group">
-                <input class="form-control form-control-sm" type="text" placeholder="Principles" aria-label=".form-control-sm">
+                <input class="form-control form-control-sm" type="text" placeholder="Principles" name="principles" aria-label=".form-control-sm">
             </div>
         </div>
         <div class="col-md-12 mb-3">
             <div class="form-group">
-                <input class="form-control form-control-sm" type="text" placeholder="Location" aria-label=".form-control-sm">
+                <input class="form-control form-control-sm" type="text" placeholder="Location" name="location" aria-label=".form-control-sm">
             </div>
         </div>
         <div class="col-md-12 mb-3">
             <div class="form-group">
-                <input class="form-control form-control-sm" type="text" placeholder="Mission" aria-label=".form-control-sm">
+                <input class="form-control form-control-sm" type="text" placeholder="Mission" name="mission" aria-label=".form-control-sm">
             </div>
         </div>
         <div class="col-md-12 mb-3">
             <div class="form-group">
-                <input class="form-control form-control-sm" type="text" placeholder="Form 1 Motto" aria-label=".form-control-sm">
+                <input class="form-control form-control-sm" type="text" placeholder="Form 1 Motto" name="form_one_stream" aria-label=".form-control-sm">
             </div>
         </div>
         <div class="col-md-12 mb-3">
             <div class="form-group">
-                <input class="form-control form-control-sm" type="text" placeholder="Form 2 Motto" aria-label=".form-control-sm">
+                <input class="form-control form-control-sm" type="text" placeholder="Form 2 Motto" name="form_two_stream" aria-label=".form-control-sm">
             </div>
         </div>
         <div class="col-md-12 mb-3">
             <div class="form-group">
-                <input class="form-control form-control-sm" type="text" placeholder="Form 3 Motto" aria-label=".form-control-sm">
+                <input class="form-control form-control-sm" type="text" placeholder="Form 3 Motto" name="form_three_stream" aria-label=".form-control-sm">
             </div>
         </div>
         <div class="col-md-12 mb-3">
             <div class="form-group">
-                <input class="form-control form-control-sm" type="text" placeholder="Form 4 Motto" aria-label=".form-control-sm">
+                <input class="form-control form-control-sm" type="text" placeholder="Form 4 Motto" name="form_four_stream" aria-label=".form-control-sm">
             </div>
         </div>
         <div class="col-md-12 mb-3">
             <div class="form-group">
-                <input class="form-control form-control-sm" type="text" placeholder="BOM Message" aria-label=".form-control-sm">
+                <input class="form-control form-control-sm" type="text" placeholder="BOM Message" name="bom_message" aria-label=".form-control-sm">
             </div>
         </div>
       <div class="col-12">
@@ -187,4 +191,6 @@
   </div>
 
 </body>
+
+<script>
 {% endblock %}

@@ -6,9 +6,11 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
+from django.contrib import messages
 
 def index(request):
     web_content = get_object_or_404(WebContent)
+    messages.success(request, 'Login Successfull. Welcome', extra_tags='alert')
     return render(request, 'main/index.html', {"web_content": web_content})
 
 def blog(request):
@@ -57,7 +59,6 @@ def contact(request):
 def login(request):
     if request.method == 'POST':
         user = auth.authenticate(username=request.POST['username'], password=request.POST['password'])
-
         if user is not None:
             auth.login(request, user)
             return redirect('home')
@@ -179,8 +180,32 @@ def all_staff(request):
 def delete_or_deactivate_success(request):
     return render(request, 'main/delete_or_deactivate_success.html')
 
-
 def control_panel(request):
     users = get_user_model().objects.all()
     user_count = User.objects.all().count()
-    return render(request, 'main/control_panel.html', {'users': users, 'user_count': user_count})
+    pending_comments = Comment.objects.all().filter(active=False)
+    comment_count = pending_comments.count()
+    return render(request, 'main/control_panel.html', {'users': users, 'user_count': user_count, 'comment_count': comment_count, 'pending_comments': pending_comments})
+
+def update_web_content(request):
+    web_content = WebContent.objects.get(id=1)
+    users = get_user_model().objects.all()
+    user_count = User.objects.all().count()
+    pending_comments = Comment.objects.all().filter(active=False)
+    comment_count = pending_comments.count()
+    if request.method == 'POST':
+        if request.POST['principles'] and request.POST['location'] and request.POST['mission'] and request.POST['form_one_stream'] and request.POST['form_two_stream'] and request.POST['form_three_stream'] and request.POST['form_four_stream'] and request.POST['bom_message']:
+            web_content.principles = request.POST['principles']
+            web_content.location = request.POST['location']
+            web_content.mission = request.POST['mission']
+            web_content.form_one_stream = request.POST['form_one_stream']
+            web_content.form_two_stream = request.POST['form_two_stream']
+            web_content.form_three_stream = request.POST['form_three_stream']
+            web_content.form_four_stream = request.POST['form_four_stream']
+            web_content.bom_message = request.POST['bom_message']
+            web_content.save()
+            messages.success(request, 'Web Content Changed Successfully!', extra_tags='alert')
+            return render(request, 'main/control_panel.html', {'users': users, 'user_count': user_count, 'comment_count': comment_count, 'pending_comments': pending_comments})
+    return render(request, 'main/control_panel.html', {'users': users, 'user_count': user_count, 'comment_count': comment_count, 'pending_comments': pending_comments})
+
+

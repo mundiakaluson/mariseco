@@ -158,30 +158,23 @@
       <table class="table table-dark table-hover">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Sender Name</th>
+      <th scope="col">Sender Email</th>
+      <th scope="col">Sender Subject</th>
+      <th scope="col">Sender Message</th>
+      <th scope="col">Time Sent</th>
     </tr>
   </thead>
   <tbody>
+  {% for contact in contacts.all %}
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td>{{ contact.sender_name }}</td>
+      <td>{{ contact.sender_mail }}</td>
+      <td>{{ contact.sender_subject }}</td>
+      <td>{{ contact.sender_message }}</td>
+      <td>{{ contact.sent_at }}</td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    {% endfor %}
   </tbody>
 </table>
 <div class="col-12">

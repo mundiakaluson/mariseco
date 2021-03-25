@@ -180,13 +180,15 @@ def delete_or_deactivate_success(request):
     return render(request, 'main/delete_or_deactivate_success.html')
 
 def control_panel(request):
+    contacts = Contact.objects.all()
     users = get_user_model().objects.all()
     user_count = User.objects.all().count()
     pending_comments = Comment.objects.all().filter(active=False)
     comment_count = pending_comments.count()
-    return render(request, 'main/control_panel.html', {'users': users, 'user_count': user_count, 'comment_count': comment_count, 'pending_comments': pending_comments})
+    return render(request, 'main/control_panel.html', {'users': users, 'user_count': user_count, 'comment_count': comment_count, 'pending_comments': pending_comments, 'contacts': contacts})
 
 def update_web_content(request):
+    contacts = Contact.objects.all()
     web_content = WebContent.objects.get(id=1)
     users = get_user_model().objects.all()
     user_count = User.objects.all().count()
@@ -204,7 +206,7 @@ def update_web_content(request):
             web_content.bom_message = request.POST['bom_message']
             web_content.save()
             messages.success(request, 'Web Content Changed Successfully!', extra_tags='alert')
-            return render(request, 'main/control_panel.html', {'users': users, 'user_count': user_count, 'comment_count': comment_count, 'pending_comments': pending_comments})
-    return render(request, 'main/control_panel.html', {'users': users, 'user_count': user_count, 'comment_count': comment_count, 'pending_comments': pending_comments})
+            return render(request, 'main/control_panel.html', {'users': users, 'user_count': user_count, 'comment_count': comment_count, 'pending_comments': pending_comments, 'contacts': contacts})
+    return render(request, 'main/control_panel.html', {'users': users, 'user_count': user_count, 'comment_count': comment_count, 'pending_comments': pending_comments, 'contacts': contacts})
 
 

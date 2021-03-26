@@ -17,16 +17,12 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-  <!-- Cookies Alert-->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
 
   <!-- Vendor CSS Files -->
   <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
   <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-  <link href="{% static '//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
   <!-- Template Main CSS File -->
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
@@ -42,7 +38,7 @@
         <span></span>
       </button>
       <h4>
-      <a class="navbar-brand text-brand" href="{% url 'home' %}"> Mari<img width="85px" height="100px" src="{% static 'img/logo.png' %}"><span class="color-b">Seco</span></a>
+      <a class="navbar-brand text-brand" href="{% url 'home' %}"> Mari<img width="75px" height="85px" src="{% static 'img/logo.png' %}"><span class="color-b">Seco</span></a>
       </h4>
 
       {% if user.is_authenticated %}
@@ -215,8 +211,6 @@
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
   <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
-  <script src="{% static '//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js' %}"></script>
-  <script src="{% static '//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js' %}"></script>
 
 
   <!-- Template Main JS File -->

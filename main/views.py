@@ -76,7 +76,8 @@ def register(request):
 
             except User.DoesNotExist:
                 user = User.objects.create_user(
-                    request.POST['username'], password=request.POST['password1'], email=request.POST['email'])
+                    request.POST['username'], password=request.POST['password1'], email=request.POST['email'],
+                    first_name=request.POST['first_name'], last_name=request.POST['last_name'])
                 user.is_active = False
                 user_info = Profile()
                 user_info.staff_level = request.POST['staff_level']
@@ -112,9 +113,12 @@ def update_profile(request):
         if request.POST['update_name'] and request.POST['update_email']:
             update_user = User.objects.get(username=request.user)
             update_user.username = request.POST['update_name']
+            update_user.first_name = request.POST['first_name']
+            update_user.last_name = request.POST['last_name']
             update_user.email = request.POST['update_email']
             update_user.save()
-            return render(request, 'main/profile.html', {'success': 'Profile Update Sucessfully!'})
+            messages.success(request, 'Profile Changed Successfully! Changes will take place as the server refreshes the Database.', extra_tags='alert')
+            return render(request, 'main/profile.html')
     return render(request, 'main/profile.html', {'info': info})
 
 def approval(request):
@@ -171,7 +175,7 @@ def deactivate(request, username):
 
 @login_required
 def all_staff(request):
-    users = get_user_model().objects.all()
+    users = get_user_model().objects.all().filter(is_active=True)
     user_count = User.objects.all().count()
     return render(request, 'main/all_staff.html', {'users': users, 'user_count': user_count})
 
@@ -179,16 +183,21 @@ def all_staff(request):
 def delete_or_deactivate_success(request):
     return render(request, 'main/delete_or_deactivate_success.html')
 
+@login_required
 def control_panel(request):
     contacts = Contact.objects.all()
-    users = get_user_model().objects.all()
-    user_count = User.objects.all().count()
+    contacts_count = Contact.objects.all().count()
+    users = get_user_model().objects.all().filter(is_active=True)
+    user_count = User.objects.all().filter(is_active=True).count()
+    pending_users = User.objects.all().filter(is_active=False)
+    pending_users_count = pending_users.count()
     pending_comments = Comment.objects.all().filter(active=False)
     comment_count = pending_comments.count()
-    return render(request, 'main/control_panel.html', {'users': users, 'user_count': user_count, 'comment_count': comment_count, 'pending_comments': pending_comments, 'contacts': contacts})
+    return render(request, 'main/control_panel.html', {'users': users, 'user_count': user_count, 'comment_count': comment_count, 'pending_comments': pending_comments, 'contacts': contacts, 'contacts_count': contacts_count, 'pending_users': pending_users, 'pending_users_count': pending_users_count})
 
 def update_web_content(request):
     contacts = Contact.objects.all()
+    contacts_count = Contact.objects.all().count()
     web_content = WebContent.objects.get(id=1)
     users = get_user_model().objects.all()
     user_count = User.objects.all().count()
@@ -203,10 +212,9 @@ def update_web_content(request):
             web_content.form_two_stream = request.POST['form_two_stream']
             web_content.form_three_stream = request.POST['form_three_stream']
             web_content.form_four_stream = request.POST['form_four_stream']
-            web_content.bom_message = request.POST['bom_message']
             web_content.save()
             messages.success(request, 'Web Content Changed Successfully!', extra_tags='alert')
-            return render(request, 'main/control_panel.html', {'users': users, 'user_count': user_count, 'comment_count': comment_count, 'pending_comments': pending_comments, 'contacts': contacts})
-    return render(request, 'main/control_panel.html', {'users': users, 'user_count': user_count, 'comment_count': comment_count, 'pending_comments': pending_comments, 'contacts': contacts})
+            return render(request, 'main/control_panel.html', {'users': users, 'user_count': user_count, 'comment_count': comment_count, 'pending_comments': pending_comments, 'contacts': contacts, 'contacts_count': contacts_count, 'pending_users': pending_users, 'pending_users_count': pending_users_count})
+    return render(request, 'main/control_panel.html', {'users': users, 'user_count': user_count, 'comment_count': comment_count, 'pending_comments': pending_comments, 'contacts': contacts, 'contacts_count': contacts_count, 'pending_users': pending_users, 'pending_users_count': pending_users_count})
 
 

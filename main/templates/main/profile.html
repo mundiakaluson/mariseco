@@ -3,6 +3,13 @@
 {% block content %}
 <section class="intro-single">
       <div class="container">
+          {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+    {% endif %} 
         <div class="row">
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box">
@@ -27,9 +34,6 @@
     </section>
 
     <div class="container emp-profile">
-        {% if success %}
-        <p style="color: green;">{{ sucess }}</p>        
-        {% endif %}
                 <div class="row">
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
@@ -43,10 +47,26 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 color-b">
-                                                <label>Name</label>
+                                                <label>Username</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p>{{ user | capfirst }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 color-b">
+                                                <label>First Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{ user.first_name | capfirst }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 color-b">
+                                                <label>Last Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{ user.last_name | capfirst }}</p>
                                             </div>
                                         </div>
                                         <div class="row">

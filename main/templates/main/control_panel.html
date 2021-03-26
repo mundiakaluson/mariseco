@@ -5,21 +5,22 @@
 <body class="bg-dark bg-gradient text-light">
 
 <section class="intro-single">
-    {% if messages %}
+
+
+    <div class="container">
+      {% if messages %}
             {% for message in messages %}
                 <div class="alert alert-success" role="alert">
                     {{ message }}
                 </div>
             {% endfor %}
     {% endif %} 
-
-      <div class="container">
-        <div class="row">
+    <div class="row">
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box">
               <h1 class="title-single text-light">Control Panel</h1>
               <span class="color-text-a text-light">This page is only visible to the Admins.</span><br>
-              
+              <span class="color-text-a text-light">The Page is a minimal admin interface letting SUPERUSERS peek at the admin panel settings without logging in to the admin interface.</span><br>
             </div>
           </div>
           <div class="col-md-12 col-lg-4">
@@ -40,9 +41,9 @@
     <div class="container">
     <div class="row">
     <div class="col-12">
-    <p> All Registered Users are <span class="color-b">{{ user_count }}</span></p>
+    <p> All Registered and Approved Users are (<span class="color-b">{{ user_count }}</span>)</p>
     <hr>
-      <table class="table table-dark table-striped">
+    <table class="table table-dark table-striped">
   <thead>
     <tr>
       <th scope="col">Username</th>
@@ -51,6 +52,7 @@
       <th scope="col">Email</th>
       <th scope="col">Last Login</th>
       <th scope="col">Date Registered</th>
+      <th scope="col">Admin User</th>
     </tr>
   </thead>
   <tbody>
@@ -62,6 +64,40 @@
       <td>{{ user.email }}</td>
       <td>{{ user.last_login | naturaltime }}</td>
       <td>{{ user.date_joined | naturaltime }}</td>
+      {% if user.is_superuser %}
+      <td class="text-center"><i class="bi bi-check-circle-fill"></i></td>
+      {% else %}
+      <td class="text-center"><i class="bi bi-x-circle-fill"></i></td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<hr>
+<p> Users waiting for Approval from you. (<span class="color-b"> {{ pending_users_count }} </span>)</p>
+<hr>
+<p> Head to the admin panel to approve registrations.</p>
+<hr>
+ <table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Last Login</th>
+      <th scope="col">Date Registered</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for pending_user in pending_users.all %}
+    <tr>
+      <td>{{ pending_user.username }}</td>
+      <td>{{ pending_user.first_name }}</td>
+      <td>{{ pending_user.last_name }}</td>
+      <td>{{ pending_user.email }}</td>
+      <td>{{ pending_user.last_login | naturaltime }}</td>
+      <td>{{ pending_user.date_joined | naturaltime }}</td>
     </tr>
     {% endfor %}
   </tbody>
@@ -69,7 +105,7 @@
 <hr>
     </div>
     <div class="col-12">
-    <p>Comments Waiting for Approval are <span class="color-b">{{ comment_count }}</span></p>
+    <p>Comments Waiting for Approval are (<span class="color-b">{{ comment_count }}</span>)</p>
     <hr>
     <table class="table table-success table-striped table-hover">
   <thead>
@@ -98,7 +134,7 @@
   </div>
   <hr>
   <div class="row">
-    <div class="col-5">
+    <div class="col-6">
     <p>Change Web Content</p>
     <hr>
     <p>Content posted here will appear in the home page</p>
@@ -137,12 +173,7 @@
         </div>
         <div class="col-md-12 mb-3">
             <div class="form-group">
-                <input class="form-control form-control-sm" type="text" placeholder="Form 4 Motto" name="form_four_stream" aria-label=".form-control-sm">
-            </div>
-        </div>
-        <div class="col-md-12 mb-3">
-            <div class="form-group">
-                <input class="form-control form-control-sm" type="text" placeholder="BOM Message" name="bom_message" aria-label=".form-control-sm">
+                <input class="form-control form-control-sm" rows="2" type="text" placeholder="Form 4 Motto" name="form_four_stream" aria-label=".form-control-sm">
             </div>
         </div>
       <div class="col-12">
@@ -150,10 +181,10 @@
         </div>
     </form>
     </div>
-    <div class="col-7">
-    <p>Task To Do</p>
+    <div class="col-6">
+    <p>Contact Form Submissions</p>
     <hr>
-    <p>This can be used for remembering the article concepts needed to be published</p>
+    <p>Contact Submissions are (<span class="color-b">{{ contacts_count }}</span>)</p>
     <hr>
       <table class="table table-dark table-hover">
   <thead>
@@ -177,9 +208,6 @@
     {% endfor %}
   </tbody>
 </table>
-<div class="col-12">
-          <button type="submit" class="btn btn-b">Add Task</button>
-    </div>
     </div>
   </div>
   </div>

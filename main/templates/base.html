@@ -11,10 +11,6 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="{% static 'img/favicon.png' %}" rel="icon">
-  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
-
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
@@ -48,22 +44,17 @@
           <li class="nav-item">
             <a class="nav-link {% block nav_home %}{% endblock nav_home %}" href="{% url 'home' %}">Home</a>
           </li>
-
           <li class="nav-item">
             <a class="nav-link {% block nav_about %}{% endblock nav_about %}" href="{% url 'covid_stats' %}">COVID-19 Stats</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link {% block nav_blog %}{% endblock nav_blog %}" href="{% url 'blog' %}">Mariseco Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% block nav_contact %}{% endblock nav_contact %}" href="{% url 'contact' %}">Contact</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'profile' %}">Logged in as <span class="color-b"> {{ user | capfirst }}</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'create' %}">Write Articles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Time: {% now "M. D, j. H:i" %}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Logout</a>

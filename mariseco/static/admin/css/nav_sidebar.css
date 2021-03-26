@@ -27,7 +27,7 @@
 
 .toggle-nav-sidebar:hover,
 .toggle-nav-sidebar:focus {
-    background-color: #3c8235;
+    background-color: #f6f6f6;
 }
 
 #nav-sidebar {
@@ -96,7 +96,7 @@
 }
 
 #nav-sidebar .current-model {
-    background: #3c8235;
+    background: #ffc;
 }
 
 .main > #nav-sidebar + .content {

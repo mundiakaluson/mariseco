@@ -74,11 +74,16 @@
   </tbody>
 </table>
 <hr>
+<p>Registration Area</p>
+{% if pending_users_count == 0 %}
+<div class="text-center">
+    <p>No Pending Registrations</p> <i class="bi bi-inbox"></i>
+  </div>
+{% else %}
 <p> Users waiting for Approval from you. (<span class="color-b"> {{ pending_users_count }} </span>)</p>
 <hr>
 <p> Head to the admin panel to approve registrations.</p>
-<hr>
- <table class="table table-dark table-striped">
+<table class="table table-dark table-striped">
   <thead>
     <tr>
       <th scope="col">Username</th>
@@ -100,6 +105,7 @@
       <td>{{ pending_user.date_joined | naturaltime }}</td>
     </tr>
     {% endfor %}
+  {% endif %}
   </tbody>
 </table>
 <hr>

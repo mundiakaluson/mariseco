@@ -1,5 +1,8 @@
 from django.contrib import admin
 from main import models
+from django.contrib.auth.models import User
+from django.contrib.auth.admin import UserAdmin
+from django.core.mail import send_mail
 
 class BlogAdmin(admin.ModelAdmin):
 
@@ -42,11 +45,39 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = ('staff_level', 'name')
     list_filter = ('staff_level', 'name')
 
+class CustomUserAdmin(UserAdmin):
+    list_display = ('id', 'username', 'email', 'first_name', 'last_name', 'is_active', 'is_superuser')
+    actions = ['approve_registration', 'disapprove_registration', 'make_admin']
+    
+    def approve_registration(modeladmin, request, queryset):
+        send_mail(
+            'MARISECO STAFF REGISTRATION APPROVAL',
+            '''Hello there!,
+            Please head to our website and confirm that your account is now approved.
+            Welcome to the Mariseco Staff Community!
+            ''',
+            'no-reply@mariseco.com',
+            [request.user.email],
+            fail_silently=False,
+        )
+        queryset.update(is_active=True)
+    
+    def disapprove_registration(modeladmin, news, queryset):
+        queryset.update(is_active=False)
+        queryset.update(is_superuser=False)
+        queryset.update(is_staff=False)
+
+    def make_admin(modeladmin, news, queryset):
+        queryset.update(is_active=True)
+        queryset.update(is_superuser=True)
+        queryset.update(is_staff=True)
 
 admin.site.register(models.Contact, ContactAdmin)
 admin.site.register(models.Blog, BlogAdmin)
 admin.site.register(models.WebContent, WebContentAdmin)
 admin.site.register(models.Comment, CommentAdmin)
 admin.site.register(models.Profile, ProfileAdmin)
+admin.site.unregister(User)
+admin.site.register(User, CustomUserAdmin)
 admin.site.site_header = "Mariakani Secondary School Admin Panel"
 admin.site.index_title = "Mariseco Admin"

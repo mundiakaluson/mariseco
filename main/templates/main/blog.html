@@ -11,7 +11,13 @@
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box">
               <h1 class="title-single">Mariseco News</h1>
-              <span class="color-text-a">Stay updated on the latest Mariseco News!</span>
+              <span class="color-text-a">Stay updated on the latest Mariseco News!</span><br>
+              {% if request.user.is_superuser %}
+              <strong>
+              <span class="color-text-a color-b">You are seeing this message because your are an Admin.</span>
+              <span class="color-text-a color-b">This are the blogs approved by you and other Admins. If there is any suspicious blog article, please unpublish it in the Admin panel.</span>
+              </strong>
+              {% endif %}
             </div>
           </div>
           <div class="col-md-12 col-lg-4">

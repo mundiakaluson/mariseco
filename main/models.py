@@ -79,6 +79,18 @@ class Profile(models.Model):
     def __unicode__(self):
         return u'Profile of user: %s' % self.user.username
 
+class Event(models.Model):
+
+    title = models.CharField(max_length=256, null=True, blank=True)
+    description = models.TextField()
+    date = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ['date']
+
+    def __str__(self):
+        return u'Event: %s' % self.title
+    
 
 def create_user_profile(sender, instance, created, **kwargs):
     if created:

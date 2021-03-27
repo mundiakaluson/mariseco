@@ -72,6 +72,9 @@ class CustomUserAdmin(UserAdmin):
         queryset.update(is_superuser=True)
         queryset.update(is_staff=True)
 
+class EventAdmin(admin.ModelAdmin):
+    list_display = ('title', 'description', 'date')
+
 admin.site.register(models.Contact, ContactAdmin)
 admin.site.register(models.Blog, BlogAdmin)
 admin.site.register(models.WebContent, WebContentAdmin)
@@ -79,5 +82,6 @@ admin.site.register(models.Comment, CommentAdmin)
 admin.site.register(models.Profile, ProfileAdmin)
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
+admin.site.register(models.Event, EventAdmin)
 admin.site.site_header = "Mariakani Secondary School Admin Panel"
 admin.site.index_title = "Mariseco Admin"

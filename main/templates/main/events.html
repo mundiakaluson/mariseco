@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Mariseco Events</h1>
+              <span class="color-text-a">Our Events are updated by our Admins. You may follow what we post to be up to date!</span><br>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{% url 'home' %}">Back to Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Mariseco Events
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+</section>
+
+<div class="container text-center">
+
+<div class="container text-center">
+    <div class="row">
+        <div class="col-md-12">
+                <div class="card-body">
+                    <div id="content">
+                        <ul class="timeline">
+                        {% for event in events.all %}
+                            <li class="event" style="font-size:13px;" data-date="{{ event.date }}">
+                                <h3>{{ event.title }}</h3>
+                                <p>{{ event.description }}</p>
+                            </li> 
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

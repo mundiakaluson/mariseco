@@ -164,10 +164,17 @@
                                                 <label>Head over to the Control Panel <br> <i class="bi bi-arrow-down-circle-fill"></i></label>
                                         </div>
                                         <br>
+                                        <div class="row">
                                        <div class="col-md-6 color-b">
                                         <a href="{% url 'control_panel' %}">
                                         <button type="submit" class="btn btn-b" style="width: 250px;">Control Panel</button>
                                         </a>
+                                    </div>
+                                    <div class="col-md-6 color-b">
+                                        <a href="{% url 'manage_blogs' %}">
+                                        <button type="submit" class="btn btn-a" style="width: 250px;">Manage Blogs</button>
+                                        </a>
+                                    </div>
                                     </div>
                                     {% endif %}
                         </div>

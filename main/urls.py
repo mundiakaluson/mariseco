@@ -23,4 +23,6 @@ urlpatterns = [
     path('all_staff', views.all_staff, name='all_staff'),
     path('control_panel', views.control_panel, name='control_panel'),
     path('update_web_content', views.update_web_content, name='update_web_content'),
+    path('manage_blogs', views.manage_blogs, name='manage_blogs'),
+    path('events', views.events, name='events'),
 ]

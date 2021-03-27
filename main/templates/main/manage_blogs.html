@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Blog Management Portal</h1>
+              <span class="color-text-a">This is the admin page for managing blogs written by registered users.</span><br>
+              <span class="color-text-a">Pending blogs can only be viewed by admins before publication.</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{% url 'profile' %}">Back to Profile</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Blogs Management
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+    </section>
+
+<div class="container">
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="row">
+<p> Article publish status can be changed in the Admin Panel. <br> Click below to head to the article section in the admin panel.<br><br><a href="{% url 'admin:main_blog_changelist' %}"><button type="submit" class="btn btn-b">Manage Articles</button></a></p>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-uppercase mb-0">Pending Articles</h5>
+            </div>
+            <hr>
+            <div class="table-responsive">
+                <table class="table no-wrap user-table mb-0">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Blog ID</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Title</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Tag</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Author</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Created At</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for pending_blog in pending_blogs.all %}
+                    <tr>
+                      <td>
+                          <h5 class="font-medium mb-0">{{ pending_blog.id }}</h5>
+                      </td>
+                      <td>
+                          <a href="{% url 'article_details' pending_blog.id %}"><span class="color-b">{{ pending_blog.title }}</span></a><br>
+                      </td>
+                      <td>
+                          <span class="text-muted">{{ pending_blog.tag }}</span><br>
+                      </td>
+                      <td>
+                        <span class="text-muted">{{ pending_blog.author }}</span>
+                      </td>
+                      <td>
+                        <span class="text-muted">{{ pending_blog.created_at }}</span>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                
+            </div>
+        </div>
+</div>
+<div class="col-md-12">
+<br>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-uppercase mb-0">Approved Articles</h5>
+            </div>
+            <hr>
+            <div class="table-responsive">
+                <table class="table no-wrap user-table mb-0">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Blog ID</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Title</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Tag</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Author</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Created At</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for approved_blog in approved_blogs.all %}
+                    <tr>
+                      <td>
+                          <h5 class="font-medium mb-0">{{ approved_blog.id }}</h5>
+                      </td>
+                      <td>
+                          <a href="{% url 'article_details' approved_blog.id %}"><span class="color-b">{{ approved_blog.title }}</span></a><br>
+                      </td>
+                      <td>
+                          <span class="text-muted">{{ approved_blog.tag }}</span><br>
+                      </td>
+                      <td>
+                        <span class="text-muted">{{ approved_blog.author }}</span>
+                      </td>
+                      <td>
+                        <span class="text-muted">{{ approved_blog.created_at }}</span>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                
+            </div>
+        </div>
+</div>
+
+</div>
+</div>
+{% endblock %}

@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Blog, Contact, WebContent, Comment, Profile
+from .models import Blog, Contact, WebContent, Comment, Profile, Event
 from django.utils import timezone
-from .forms import CommentForm
 from django.contrib import auth
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -217,4 +216,13 @@ def update_web_content(request):
             return render(request, 'main/control_panel.html', {'users': users, 'user_count': user_count, 'comment_count': comment_count, 'pending_comments': pending_comments, 'contacts': contacts, 'contacts_count': contacts_count, 'pending_users': pending_users, 'pending_users_count': pending_users_count})
     return render(request, 'main/control_panel.html', {'users': users, 'user_count': user_count, 'comment_count': comment_count, 'pending_comments': pending_comments, 'contacts': contacts, 'contacts_count': contacts_count, 'pending_users': pending_users, 'pending_users_count': pending_users_count})
 
+def manage_blogs(request):
 
+    all_blogs = Blog.objects.all()
+    pending_blogs = all_blogs.filter(published=False)
+    approved_blogs = all_blogs.filter(published=True)
+    return render(request, 'main/manage_blogs.html', {'pending_blogs': pending_blogs, 'approved_blogs':approved_blogs})
+
+def events(request):
+    events = Event.objects.all()
+    return render(request, 'main/events.html', {'events': events})

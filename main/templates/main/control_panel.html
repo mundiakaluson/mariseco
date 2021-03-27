@@ -111,6 +111,11 @@
 <hr>
     </div>
     <div class="col-12">
+    {% if comment_count == 0 %}
+    <div class="text-center">
+        <p>No Pending Pending Comments</p> <i class="bi bi-inbox"></i>
+      </div>
+    {% else %}
     <p>Comments Waiting for Approval are (<span class="color-b">{{ comment_count }}</span>)</p>
     <hr>
     <table class="table table-success table-striped table-hover">
@@ -133,6 +138,7 @@
       <td>{{ pending_comment.created_on | naturaltime }}</td>
     </tr>
     {% endfor %}
+    {% endif %}
   </tbody>
   <p>Head over to the <a href="{% url 'admin:main_comment_changelist' %}">admin</a> interface to approve comments.</p>
 </table>
@@ -188,6 +194,11 @@
     </form>
     </div>
     <div class="col-6">
+    {% if contacts_count == 0 %}
+    <div class="text-center">
+        <p>No Pending Contact Submissions</p> <i class="bi bi-inbox"></i>
+      </div>
+    {% else %}
     <p>Contact Form Submissions</p>
     <hr>
     <p>Contact Submissions are (<span class="color-b">{{ contacts_count }}</span>)</p>
@@ -212,6 +223,7 @@
       <td>{{ contact.sent_at }}</td>
     </tr>
     {% endfor %}
+    {% endif %}
   </tbody>
 </table>
     </div>

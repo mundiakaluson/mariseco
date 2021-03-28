@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '=jg-0t%69%6yhecas^@nuy50eq%j^3=(ulzuyseyt@gh88nz16'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['shielded-stream-91087.herokuapp.com', '127.0.0.1']
 

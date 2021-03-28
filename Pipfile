@@ -44,6 +44,7 @@ PyJWT = "==2.0.1"
 django-heroku = "*"
 psycopg2-binary = "*"
 psycopg2 = "*"
+gunicorn = "*"
 
 [dev-packages]
 

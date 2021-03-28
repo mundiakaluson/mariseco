@@ -41,6 +41,9 @@ virtualenv = "==20.4.2"
 Django = "==3.1.7"
 Pillow = "==8.1.0"
 PyJWT = "==2.0.1"
+django-heroku = "*"
+psycopg2-binary = "*"
+psycopg2 = "*"
 
 [dev-packages]
 

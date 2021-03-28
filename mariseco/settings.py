@@ -14,7 +14,7 @@ SECRET_KEY = '=jg-0t%69%6yhecas^@nuy50eq%j^3=(ulzuyseyt@gh88nz16'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['e4ce3a9901bf.ngrok.io', '127.0.0.1']
+ALLOWED_HOSTS = ['shielded-stream-91087.herokuapp.com', '127.0.0.1']
 
 # Application definition
 
@@ -45,6 +45,7 @@ MIDDLEWARE = [
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 
 ROOT_URLCONF = 'mariseco.urls'

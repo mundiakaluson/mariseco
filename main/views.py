@@ -50,7 +50,7 @@ def contact(request):
             contact.sender_message = request.POST['sender_message']
             contact.sent_at = timezone.now()
             contact.save()
-            return render(request, 'main/success.html')
+            redirect('success')
     return render(request, 'main/contact.html')
 
 

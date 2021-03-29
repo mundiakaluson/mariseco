@@ -1,4 +1,4 @@
-from django.test import SimpleTestCase, Client
+from django.test import SimpleTestCase, Client, TestCase
 from django.urls import reverse, resolve
 from main.views import (
     index, blog, article_success,

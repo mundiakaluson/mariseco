@@ -130,4 +130,4 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_DIR, 'staticfiles'),
 )
 
-django_heroku.settings(locals())
+django_heroku.settings(locals(), test_runner=False)

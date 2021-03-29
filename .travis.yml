@@ -10,9 +10,7 @@ script:
   - python manage.py test
 
 steps:
-# (Other steps go here)
   - name: "Upload coverage to Codecov"
   uses: codecov/codecov-action@v1
   with:
       fail_ci_if_error: true
-      token: 375795c4-8c70-4412-ab70-e9da8e897e6c

@@ -1,7 +1,6 @@
 # Django Powered School Website
 
-_Documentation Powered By:_
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
+
 
 [![TravisCI (.org) build status](https://travis-ci.com/mundiakaluson/mariseco.svg?branch=main)]() [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![Updates](https://pyup.io/repos/github/mundiakaluson/mariseco/shield.svg)](https://pyup.io/repos/github/mundiakaluson/mariseco/) [![Python 3](https://pyup.io/repos/github/mundiakaluson/mariseco/python-3-shield.svg)](https://pyup.io/repos/github/mundiakaluson/mariseco/) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity) ![Maintaner](https://img.shields.io/badge/maintainer-mundiakaluson-blue) [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://shields.io/) [![Documentation Status](https://readthedocs.org/projects/ansicolortags/badge/?version=latest)](http://ansicolortags.readthedocs.io/?badge=latest) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/) 

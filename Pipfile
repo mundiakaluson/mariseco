@@ -46,6 +46,7 @@ psycopg2 = "*"
 gunicorn = "*"
 whitenoise = "*"
 coverage = "*"
+django-admin-honeypot = "*"
 
 [dev-packages]
 

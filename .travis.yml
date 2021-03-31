@@ -5,9 +5,11 @@ after_success:
 
 install:
   - pip install -r requirements.txt
+  - pip install coveralls
 
 script:
   - python manage.py test
+  - coverage run --source=main manage.py test
 
 steps:
   - name: "Upload coverage to Codecov"
@@ -18,4 +20,7 @@ steps:
 notifications:
   email:
     on_success: never
-    on_failure: always
+    on_failure: always 
+
+after_success:
+  coveralls

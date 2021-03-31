@@ -47,7 +47,6 @@ gunicorn = "*"
 whitenoise = "*"
 coverage = "*"
 django-admin-honeypot = "*"
-coveralls = "*"
 
 [dev-packages]
 

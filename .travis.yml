@@ -14,8 +14,3 @@ steps:
   uses: codecov/codecov-action@v1
   with:
       fail_ci_if_error: true
-
-notifications:
-  email:
-    on_success: never
-    on_failure: always

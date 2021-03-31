@@ -47,17 +47,8 @@ gunicorn = "*"
 whitenoise = "*"
 coverage = "*"
 django-admin-honeypot = "*"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 coveralls = "*"
 django-chatter = "*"
->>>>>>> 7a515d2126c0515526099372276ce6b0f1f6c1ba
-=======
->>>>>>> parent of 9128e51 (coveralls report)
-=======
->>>>>>> parent of 9128e51 (coveralls report)
 
 [dev-packages]
 

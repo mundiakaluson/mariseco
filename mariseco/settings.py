@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'main',
     'admin_honeypot',
-    'django_chatter',
 ]
 
 CHANNEL_LAYERS = {

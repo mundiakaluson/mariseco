@@ -29,8 +29,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'main',
-    'admin_honeypot'
+    'admin_honeypot',
+    'django_chatter',
 ]
+
+CHANNEL_LAYERS = {
+  'default': {
+      'BACKEND': 'channels_redis.core.RedisChannelLayer',
+      'CONFIG': {
+          "hosts": [('127.0.0.1', 6379)],
+      },
+  },
+}
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 

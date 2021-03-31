@@ -48,7 +48,6 @@ whitenoise = "*"
 coverage = "*"
 django-admin-honeypot = "*"
 coveralls = "*"
-django-chatter = "*"
 
 [dev-packages]
 

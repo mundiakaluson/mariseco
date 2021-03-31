@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '=jg-0t%69%6yhecas^@nuy50eq%j^3=(ulzuyseyt@gh88nz16'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['shielded-stream-91087.herokuapp.com', '127.0.0.1']
 
@@ -86,7 +86,7 @@ AUTH_PROFILE_MODULE = 'main.Profile'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'db.sqlite3',
     }
 }
 

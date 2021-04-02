@@ -1,12 +1,22 @@
 language: python
 python:
   - "3.9"
+  - "3.9-dev"
 
+virtualenv:
+  system_site_packages: true
+
+before_install:
+      - choco install python3
+      - export PATH="/c/Python38:/c/Python38/Scripts:$PATH"
+      - python -m pip install --upgrade pip wheel
+    
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
 install:
   - pip install -r requirements.txt
+  - pip install .
 
 script:
   - python manage.py test

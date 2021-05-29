@@ -42,5 +42,5 @@ tox==3.23.1
 urllib3==1.26.4
 virtualenv==20.4.7
 urllib3==1.26.5
-virtualenv==20.4.6
+virtualenv==20.4.7
 whitenoise==5.2.0

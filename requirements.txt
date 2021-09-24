@@ -5,7 +5,7 @@ cffi==1.14.6
 chardet==4.0.0
 cryptography==3.4.7
 defusedxml==0.7.1
-distlib==0.3.2
+distlib==0.3.3
 dj-database-url==0.5.0
 Django==3.2.5
 django-admin-interface==0.16.3
@@ -39,8 +39,8 @@ social-auth-core==4.1.0
 sqlparse==0.4.1
 toml==0.10.2
 tox==3.23.1
-urllib3==1.26.6
-virtualenv==20.4.7
-urllib3==1.26.6
-virtualenv==20.4.7
+urllib3==1.26.7
+virtualenv==20.8.1
+urllib3==1.26.7
+virtualenv==20.8.1
 whitenoise==5.2.0

@@ -40,7 +40,7 @@ sqlparse==0.4.2
 toml==0.10.2
 tox==3.24.4
 urllib3==1.26.7
-virtualenv==20.4.7
+virtualenv==20.8.1
 urllib3==1.26.7
 virtualenv==20.8.1
 urllib3==1.26.7

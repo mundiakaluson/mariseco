@@ -20,7 +20,7 @@ gunicorn==20.1.0
 idna==3.2
 jsonfield==3.1.0
 oauthlib==3.1.1
-packaging==21.0
+packaging==21.2
 Pillow==8.3.2
 pluggy==1.0.0
 psycopg2==2.9.1

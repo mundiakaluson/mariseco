@@ -38,7 +38,7 @@ social-auth-app-django==5.0.0
 social-auth-core==4.1.0
 sqlparse==0.4.2
 toml==0.10.2
-tox==3.24.4
+tox==4.4.12
 urllib3==1.26.7
 virtualenv==20.8.1
 whitenoise==5.3.0
